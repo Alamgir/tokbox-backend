@@ -9,6 +9,7 @@ bin/
 build/
 classes/
 IdoniaBackend/WebContent/META-INF/context.xml
+.idea
 
 #########################
 #      OS X Ignore      #
