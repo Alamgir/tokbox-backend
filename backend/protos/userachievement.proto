@@ -1,0 +1,14 @@
+package com.cboxgames.utils.idonia.types.proto;
+
+option java_package = "com.cboxgames.utils.idonia.types.proto";
+option java_outer_classname = "UserAchievementProtos";
+
+message UserAchievementProto {
+    optional int32 achievement_id = 1;
+    optional bool complete = 2 [default=false] ;
+    optional int32 character_id = 3;
+}
+
+message UserAchievementArrayProto {
+    repeated UserAchievementProto userAchievement = 1;
+}

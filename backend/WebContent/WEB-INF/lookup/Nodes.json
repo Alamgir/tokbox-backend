@@ -1,0 +1,470 @@
+[
+  {
+    "node": {
+      "region": 1,
+      "name": "Perucian Hills",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 4,
+      "child_nodes": "5",
+      "mob_id": "0",
+      "description": "The Mordilian Legion has attempted to flank the Idonian Army. Get there fast enough to stop them from gaining ground and invading Eir."
+    }
+  },
+  {
+    "node": {
+      "region": 2,
+      "name": "Temples of Bahar",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 5,
+      "child_nodes": "6",
+      "mob_id": "0",
+      "description": "The Temples of Bahar used to be serene and filled with the soft air of chanting. The Dark War has turned this place of worship into a bloodbath."
+    }
+  },
+  {
+    "node": {
+      "region": 2,
+      "name": "Eiran Farmlands",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 6,
+      "child_nodes": "9,7",
+      "mob_id": "0",
+      "description": "A few enemy squads have been reported terrorizing farmland in this area."
+    }
+  },
+  {
+    "node": {
+      "region": 2,
+      "name": "Minas Zenoth",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 7,
+      "child_nodes": "36,8",
+      "mob_id": "0",
+      "description": "Minas Zenith provides crucial visibility for miles around. Force the Dark Counsel out of the area and give Eir the eyes it needs."
+    }
+  },
+  {
+    "node": {
+      "region": 2,
+      "name": "Irbryn",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 8,
+      "child_nodes": "2",
+      "mob_id": "0",
+      "description": "The Irbryn Peninsula was known for its vibrant coastal culture. Put an end to the recent attacks on its beaches."
+    }
+  },
+  {
+    "node": {
+      "region": 2,
+      "name": "Faerhorn",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 9,
+      "child_nodes": "11",
+      "mob_id": "0",
+      "description": "Every morning, the Monks of Faerhorn blow massive horns that can be heard hundreds of miles away. The horns haven't been heard for a few days now..."
+    }
+  },
+  {
+    "node": {
+      "region": 1,
+      "name": "Brookden",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 10,
+      "child_nodes": "35",
+      "mob_id": "0",
+      "description": "A whimsical and bright place, the Dark Council has a special hatred for Brookden's happy atmosphere."
+    }
+  },
+  {
+    "node": {
+      "region": 1,
+      "name": "Ianthian Border",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 12,
+      "child_nodes": "41,10",
+      "mob_id": "0",
+      "description": "The enemies along the Ianthian and Urudin border carry a strange message that death is to the North..."
+    }
+  },
+  {
+    "node": {
+      "region": 4,
+      "name": "Verisia",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 14,
+      "child_nodes": "12",
+      "mob_id": "0",
+      "description": "The Verisian Light's perpetual glow has turned its people into insomniacs. Enemy forces are trying to cover the Light and plunge Verisia into darkness."
+    }
+  },
+  {
+    "node": {
+      "region": 3,
+      "name": "Ianthia",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 17,
+      "child_nodes": "18,21",
+      "mob_id": "0",
+      "description": "Welcome to Ianthia, the largest province in Idonia with the most powerful warriors. Hail Hildegard!"
+    }
+  },
+  {
+    "node": {
+      "region": 3,
+      "name": "Ordalea",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 18,
+      "child_nodes": "19",
+      "mob_id": "0",
+      "description": "Home to the Faction of Ordalea, an elite group of warriors priding itself on the slaughter of Dark Forces. "
+    }
+  },
+  {
+    "node": {
+      "region": 3,
+      "name": "Frosthaven",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 19,
+      "child_nodes": "20,37",
+      "mob_id": "0",
+      "description": "With an icy climate, Frosthaven is the closest Ianthian establishment to The White Peaks...and Mount Etosus."
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Port of Syana",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 23,
+      "child_nodes": "43,45",
+      "mob_id": "0",
+      "description": "Syana is a host to many trading ships that carry exotic foods, animals, and materials from far away lands."
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Ithe",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 24,
+      "child_nodes": "25,47",
+      "mob_id": "0",
+      "description": "Ithe has been a trading capital since Atla's establishment. It currently only trades in war and destruction."
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Booty",
+      "num_waves": 3,
+      "node_type": "Booty",
+      "id": 40,
+      "child_nodes": "0",
+      "mob_id": "0",
+      "description": "Victory! Your journey is now complete. Wait another day and you will be able to try again!"
+    }
+  },
+  {
+    "node": {
+      "region": 3,
+      "name": "Milstone",
+      "num_waves": 3,
+      "node_type": "Node",
+      "id": 41,
+      "child_nodes": "42",
+      "mob_id": "0",
+      "description": "Although this town is located in Ianthia, Milstone's inhabitants are mostly skilled woodsmen. "
+    }
+  },
+  {
+    "node": {
+      "region": 1,
+      "name": "Furwood",
+      "num_waves": 3,
+      "node_type": "Node",
+      "id": 42,
+      "child_nodes": "13",
+      "mob_id": "0",
+      "description": "After the invasion by Azfor's minions, Furwood is slowly recovering its population and moral. "
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Roda",
+      "num_waves": 3,
+      "node_type": "Node",
+      "id": 43,
+      "child_nodes": "44",
+      "mob_id": "0",
+      "description": "Roda is the information capital of Idonia. Mercenaries, spies, and assassins call this place home.   "
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Forbidden Pier",
+      "num_waves": 3,
+      "node_type": "Node",
+      "id": 44,
+      "child_nodes": "39",
+      "mob_id": "0",
+      "description": "Little is known about this ghost town. However,  rumor has it that treasure may lie somewhere nearby."
+    }
+  },
+  {
+    "node": {
+      "region": 1,
+      "name": "Erador",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 3,
+      "child_nodes": "4",
+      "mob_id": "0",
+      "description": "Decades of war has been fought on Idonia's soil and it is now your turn to fight back. You are needed desperately on the front lines of Urudin."
+    }
+  },
+  {
+    "node": {
+      "region": 1,
+      "name": "Musou",
+      "num_waves": 1,
+      "node_type": "Boss",
+      "id": 13,
+      "child_nodes": "0",
+      "mob_id": "56",
+      "description": "An insane sorceress who speaks of a magical talisman that gives divine power. Musou has spent her entire life searching for this talisman. This has sent her into a fury."
+    }
+  },
+  {
+    "node": {
+      "region": 4,
+      "name": "Jag",
+      "num_waves": 1,
+      "node_type": "Boss",
+      "id": 11,
+      "child_nodes": "15",
+      "mob_id": "50",
+      "description": "Jag started as an abandoned feline whom the legendary sorceror, Azfor, kept as a pet."
+    }
+  },
+  {
+    "node": {
+      "region": 3,
+      "name": "Rocko",
+      "num_waves": 1,
+      "node_type": "Boss",
+      "id": 20,
+      "child_nodes": "0",
+      "mob_id": "55",
+      "description": "Rocko's origins herald from the White Peaks. He is made of granite, diamond, crystal, and limestone; how he became so is a mystery."
+    }
+  },
+  {
+    "node": {
+      "region": 4,
+      "name": "Onasus",
+      "num_waves": 1,
+      "node_type": "Node",
+      "id": 15,
+      "child_nodes": "14,17,22,16",
+      "mob_id": "0",
+      "description": "Onasus is a central point for Idonian forces as it is a production center for weapons, potions, and magical objects. However, it has made Onasus a target for Dark Council leaders."
+    }
+  },
+  {
+    "node": {
+      "region": 3,
+      "name": "Treasure of Ianthia",
+      "num_waves": 1,
+      "node_type": "Treasure",
+      "id": 37,
+      "child_nodes": "0",
+      "mob_id": "0",
+      "description": "A special box that is full of surprises. Rewards include gold, tokens, and a good chance to earn an epic item!"
+    }
+  },
+  {
+    "node": {
+      "region": 4,
+      "name": "Viz",
+      "num_waves": 1,
+      "node_type": "Boss",
+      "id": 21,
+      "child_nodes": "19",
+      "mob_id": "52",
+      "description": "Viz was once a revered and iconic warrior of Ianthia who became disgruntled after the sorcerors of the Dark Forces cast spells on him to lose his body, but retain his spirit."
+    }
+  },
+  {
+    "node": {
+      "region": 4,
+      "name": "Rykor",
+      "num_waves": 1,
+      "node_type": "Boss",
+      "id": 22,
+      "child_nodes": "23",
+      "mob_id": "51",
+      "description": "As Azfor's personal assistant, Rykor sought to have as much power as Azfor, and after pestering his superior enough times, Azfor granted Rykor life beyond death."
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Hulio and Julianna",
+      "num_waves": 1,
+      "node_type": "Boss",
+      "id": 25,
+      "child_nodes": "0",
+      "mob_id": "53,54",
+      "description": "A union of love and destruction, they were acquainted during a raid in Ithe, and the rest of their tale tells of corruption, greed, and hatred."
+    }
+  },
+  {
+    "node": {
+      "region": 4,
+      "name": "Cajal",
+      "num_waves": 1,
+      "node_type": "Boss",
+      "id": 16,
+      "child_nodes": "38",
+      "mob_id": "57",
+      "description": "Condemned by the Holy Circle of Hildegard, Cajal was once a noble knight who was corrupted by the greed of the Dark Council."
+    }
+  },
+  {
+    "node": {
+      "region": 1,
+      "name": "Treasure of Urudin",
+      "num_waves": 1,
+      "node_type": "Treasure",
+      "id": 35,
+      "child_nodes": "0",
+      "mob_id": "0",
+      "description": "A special box that is full of surprises. Rewards include gold, tokens, and a good chance to earn an epic item!"
+    }
+  },
+  {
+    "node": {
+      "region": 2,
+      "name": "Treasure of Eir",
+      "num_waves": 1,
+      "node_type": "Treasure",
+      "id": 36,
+      "child_nodes": "0",
+      "mob_id": "0",
+      "description": "A special box that is full of surprises. Rewards include gold, tokens, and a good chance to earn an epic item!"
+    }
+  },
+  {
+    "node": {
+      "region": 4,
+      "name": "Treasure of Linnaean Sands",
+      "num_waves": 1,
+      "node_type": "Treasure",
+      "id": 38,
+      "child_nodes": "0",
+      "mob_id": "0",
+      "description": "A special box that is full of surprises. Rewards include gold, tokens, and a good chance to earn an epic item!"
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Treasure of Atla",
+      "num_waves": 1,
+      "node_type": "Treasure",
+      "id": 39,
+      "child_nodes": "0",
+      "mob_id": "0",
+      "description": "A special box that is full of surprises. Rewards include gold, tokens, and a good chance to earn an epic item!"
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Tristle",
+      "num_waves": 3,
+      "node_type": "Node",
+      "id": 45,
+      "child_nodes": "46",
+      "mob_id": "0",
+      "description": "The most liberal city in idonia. Members of different races and species come here to elope."
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "X",
+      "num_waves": 3,
+      "node_type": "Node",
+      "id": 46,
+      "child_nodes": "24",
+      "mob_id": "0",
+      "description": "X was named after the classic symbol for assassins. Two bloody daggers were crossed to warn weaklings to stay away."
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "First Base",
+      "num_waves": 3,
+      "node_type": "Daily",
+      "id": 47,
+      "child_nodes": "48",
+      "mob_id": "0",
+      "description": "The first step to treasure is always the hardest."
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Second Base",
+      "num_waves": 3,
+      "node_type": "Daily",
+      "id": 48,
+      "child_nodes": "49",
+      "mob_id": "0",
+      "description": "Although tiring and unrewarding, it is necessary to just suck it up and keep going."
+    }
+  },
+  {
+    "node": {
+      "region": 5,
+      "name": "Third Base",
+      "num_waves": 1,
+      "node_type": "Daily",
+      "id": 49,
+      "child_nodes": "40",
+      "mob_id": "0",
+      "description": "Things are starting to perk up. One more step to victory."
+    }
+  },
+  {
+    "node": {
+      "region": 2,
+      "name": "Hortel",
+      "num_waves": 1,
+      "node_type": "Boss",
+      "id": 2,
+      "child_nodes": "0",
+      "mob_id": "49",
+      "description": "He once was a revered member of the Dark Council, but fell after First Disbanding. Hortel is now the leader of the Dark Legion, a position he earned out of pity."
+    }
+  }
+]

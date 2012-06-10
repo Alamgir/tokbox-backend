@@ -1,0 +1,14 @@
+package com.cboxgames.utils.idonia.types.proto;
+
+option java_package = "com.cboxgames.utils.idonia.types.proto";
+option java_outer_classname = "UserNodeProtos";
+
+message UserNodeProto {
+    optional int32 node_id = 1;
+    optional bool complete = 2;
+    optional int32 id = 3;
+}
+
+message UserNodeArrayProto {
+    repeated UserNodeProto userNode = 1;
+}

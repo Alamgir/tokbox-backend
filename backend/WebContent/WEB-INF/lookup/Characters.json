@@ -1,0 +1,102 @@
+[
+  {
+    "character": {
+      "will": 5,
+      "name": "Warrior",
+      "armor": 10.0,
+      "strength": 5,
+      "created_at": "2010-11-07T08:27:28Z",
+      "updated_at": "2011-10-25T05:50:08Z",
+      "vitality": 14,
+      "physical_crit": 2.5,
+      "level": 1,
+      "id": 1,
+      "dodge": 2.0,
+      "spell_crit": 0.0,
+      "description": "Heralding from Ianthia, he is a fierce fighter with a quick temper. His thick armor protects him from most attacks.!Primary Stat: Vitality!Damage Type: Physical",
+      "intelligence": 1,
+      "agility": 2,
+      "experience": 0
+    }
+  },
+  {
+    "character": {
+      "will": 5,
+      "name": "Rogue",
+      "armor": 5.0,
+      "strength": 11,
+      "created_at": "2010-11-07T08:28:14Z",
+      "updated_at": "2011-10-25T04:46:44Z",
+      "vitality": 12,
+      "physical_crit": 5.0,
+      "level": 1,
+      "id": 2,
+      "dodge": 7.0,
+      "spell_crit": 0.0,
+      "description": "A truly deceptive being from the Coast of Atla, she attacks with blinding speed and accuracy.!Primary Stat: Strength!Damage Type: Physical",
+      "intelligence": 1,
+      "agility": 3,
+      "experience": 0
+    }
+  },
+  {
+    "character": {
+      "will": 8,
+      "name": "Mage",
+      "armor": 2.0,
+      "strength": 1,
+      "created_at": "2010-11-07T08:28:46Z",
+      "updated_at": "2011-10-25T21:43:12Z",
+      "vitality": 10,
+      "physical_crit": 0.0,
+      "level": 1,
+      "id": 3,
+      "dodge": 2.0,
+      "spell_crit": 5.0,
+      "description": "It deals in the dark arts of blood magic and sorcery as the screams of suffering souls emanate from its staff.!Primary Stat: Intelligence!Damage Type: Magic",
+      "intelligence": 11,
+      "agility": 1,
+      "experience": 0
+    }
+  },
+  {
+    "character": {
+      "will": 10,
+      "name": "Healer",
+      "armor": 2.0,
+      "strength": 1,
+      "created_at": "2010-11-07T08:29:17Z",
+      "updated_at": "2011-10-25T04:49:58Z",
+      "vitality": 10,
+      "physical_crit": 0.0,
+      "level": 1,
+      "id": 4,
+      "dodge": 2.0,
+      "spell_crit": 4.0,
+      "description": "Her healing techniques are unmatched and make her a key ally in batte, but she is relatively unarmed.!Primary Stat: Will!Damage Type: Magic",
+      "intelligence": 10,
+      "agility": 5,
+      "experience": 0
+    }
+  },
+  {
+    "character": {
+      "will": 6,
+      "name": "Archer",
+      "armor": 2.0,
+      "strength": 1,
+      "created_at": "2010-11-07T08:29:39Z",
+      "updated_at": "2011-10-25T04:52:48Z",
+      "vitality": 11,
+      "physical_crit": 2.0,
+      "level": 1,
+      "id": 5,
+      "dodge": 2.0,
+      "spell_crit": 2.0,
+      "description": "His tightly-strung bow shoots various arrows while his trusty horn enables him to call on animal spirits in defense.!Primary Stats: Agility, Intelligence!Damage Types: Ranged, Magic",
+      "intelligence": 5,
+      "agility": 6,
+      "experience": 0
+    }
+  }
+]

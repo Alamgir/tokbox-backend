@@ -1,0 +1,108 @@
+[
+  {
+    "analytic":{
+      "name":"Gold Count",
+      "created_at":"2011-08-18T00:14:12Z",
+      "updated_at":"2011-08-18T00:14:12Z",
+      "id":1,
+      "description":"Counts the amount of gold that the user has spent"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Skill Swap Count",
+      "created_at":"2011-08-18T03:52:18Z",
+      "updated_at":"2011-08-18T03:52:18Z",
+      "id":2,
+      "description":"Counts how many times the user has swapped skills"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Skills Bought Count",
+      "created_at":"2011-08-18T03:52:35Z",
+      "updated_at":"2011-08-18T03:52:35Z",
+      "id":3,
+      "description":"Counts how many skills the user has purchased"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Accessory Swap Count",
+      "created_at":"2011-08-18T03:53:00Z",
+      "updated_at":"2011-08-18T03:53:00Z",
+      "id":4,
+      "description":"Counts how many times the user has swapped accessories"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Accessories Bought Count",
+      "created_at":"2011-08-18T03:53:21Z",
+      "updated_at":"2011-08-18T03:53:33Z",
+      "id":5,
+      "description":"Counts how many accessories the user has purchased"
+    }
+  },
+  { 
+    "analytic":{
+      "name":"Token Count",
+      "created_at":"2011-08-20T23:01:04Z",
+      "updated_at":"2011-08-20T23:01:04Z",
+      "id":7,
+      "description":"Counts the number of tokens spent"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Character Swap Count",
+      "created_at":"2011-08-20T23:01:41Z",
+      "updated_at":"2011-08-20T23:01:41Z",
+      "id":8,
+      "description":"Counts the number of times characters are swapped in the lineup"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Login Count",
+      "created_at":"2011-08-20T23:04:18Z",
+      "updated_at":"2011-08-20T23:04:18Z",
+      "id":9,
+      "description":"Number of times the user has logged in"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Weapon Upgrade Count",
+      "created_at":"2011-08-20T23:05:09Z",
+      "updated_at":"2011-08-20T23:05:09Z",
+      "id":10,
+      "description":"Number of times the user has upgraded weapons"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Purchase Shop Count",
+      "created_at":"2011-08-20T23:05:46Z",
+      "updated_at":"2011-08-20T23:05:46Z",
+      "id":11,
+      "description":"Number of purchases made in the purchase shop"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Mob Wave Count",
+      "created_at":"2011-08-20T23:06:08Z",
+      "updated_at":"2011-08-20T23:06:08Z",
+      "id":12,
+      "description":"Number of waves of mobs destroyed in PvE"
+    }
+  },
+  {
+    "analytic":{
+      "name":"Breadstick Count",
+      "created_at":"2011-08-20T23:22:57Z",
+      "updated_at":"2011-08-20T23:22:57Z",
+      "id":13,
+      "description":"Number of times breadsticks are applied"}}
+]

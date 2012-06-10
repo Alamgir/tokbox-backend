@@ -1,0 +1,200 @@
+[
+  {
+    "purchase": {
+      "price": 0.0,
+      "name": "Earn Tokens",
+      "total": 0,
+      "id": 19,
+      "purchase_type": "Money",
+      "purchase_abbr": "ETK",
+      "description": "Would you like to earn new tokens for free?"
+    }
+  },
+  {
+    "purchase": {
+      "price": 1.0,
+      "name": "Handful of Goodies",
+      "total": 12,
+      "id": 5,
+      "purchase_type": "Money",
+      "purchase_abbr": "HFG",
+      "description": "This Handful of Goodies holds 20 Tokens. Trade them in for prizes at the market."
+    }
+  },
+  {
+    "purchase": {
+      "price": 5.0,
+      "name": "Mouthful of Goodies",
+      "total": 15,
+      "id": 6,
+      "purchase_type": "Money",
+      "purchase_abbr": "MFG",
+      "description": "This Mouthful of Tokens holds 110 Tokens. You get 10 Tokens for free!"
+    }
+  },
+  {
+    "purchase": {
+      "price": 10.0,
+      "name": "Small Bag of Goodies",
+      "total": 13,
+      "id": 7,
+      "purchase_type": "Money",
+      "purchase_abbr": "SBG",
+      "description": "This Small Bag of Goodies holds 220 Tokens. You get 20 Tokens for free!"
+    }
+  },
+  {
+    "purchase": {
+      "price": 20.0,
+      "name": "Box of Goodies",
+      "total": 15,
+      "id": 16,
+      "purchase_type": "Money",
+      "purchase_abbr": "BOG",
+      "description": "This Box of Goodies holds 440 Tokens. You get 40 Tokens for free!"
+    }
+  },
+  {
+    "purchase": {
+      "price": 50.0,
+      "name": "Giant Sack of Goodies",
+      "total": 11,
+      "id": 17,
+      "purchase_type": "Money",
+      "purchase_abbr": "GSG",
+      "description": "This Giant Sack of Goodies holds 1100 Tokens. You get 100 Tokens for free!"
+    }
+  },
+  {
+    "purchase": {
+      "price": 100.0,
+      "name": "Massive Sack of Goodies",
+      "total": 283,
+      "id": 18,
+      "purchase_type": "Money",
+      "purchase_abbr": "MSG",
+      "description": "This Massive Sack of Goodies holds 2200 Tokens. You get 200 Tokens for free!"
+    }
+  },
+  {
+    "purchase": {
+      "price": 5.0,
+      "name": "Reforge Armor",
+      "total": 113,
+      "id": 10,
+      "purchase_type": "Token",
+      "purchase_abbr": "WSA",
+      "description": "Accidentally allocated your armor points to the wrong stats? Give yourself another chance."
+    }
+  },
+  {
+    "purchase": {
+      "price": 5.0,
+      "name": "Reforge Weapon",
+      "total": 57,
+      "id": 9,
+      "purchase_type": "Token",
+      "purchase_abbr": "WRT",
+      "description": "Accidentally allocated your weapon points to the wrong stats? Give yourself another chance."
+    }
+  },
+  {
+    "purchase": {
+      "price": 10.0,
+      "name": "Gold Mine",
+      "total": 276,
+      "id": 3,
+      "purchase_type": "Token",
+      "purchase_abbr": "GOM",
+      "description": "Convert your tokens into solid gold! Current Exchange Rate: 300 Gold for 1 Token."
+    }
+  },
+  {
+    "purchase": {
+      "price": 10.0,
+      "name": "Amnesia",
+      "total": 123,
+      "id": 8,
+      "purchase_type": "Token",
+      "purchase_abbr": "AMN",
+      "description": "Wish you could go back and allocate stat points differently? Restore all stat points for one character."
+    }
+  },
+  {
+    "purchase": {
+      "price": 10.0,
+      "name": "Expanded Sack",
+      "total": 302,
+      "id": 15,
+      "purchase_type": "Token",
+      "purchase_abbr": "SCK",
+      "description": "Gain additional inventory slots so you can carry more weapons and accessories."
+    }
+  },
+  {
+    "purchase": {
+      "price": 10.0,
+      "name": "Bread Slice",
+      "total": 29,
+      "id": 11,
+      "purchase_type": "Token",
+      "purchase_abbr": "BSL",
+      "description": "A slice of bread that increases your team's experience gain by 40%. Lasts for 3 battles.\t"
+    }
+  },
+  {
+    "purchase": {
+      "price": 10.0,
+      "name": "Bread Loaf",
+      "total": 468,
+      "id": 12,
+      "purchase_type": "Token",
+      "purchase_abbr": "BLF",
+      "description": "A loaf of bread that increases your team's experience gain by 100%. Lasts for 1 battle.\t"
+    }
+  },
+  {
+    "purchase": {
+      "price": 10.0,
+      "name": "Breadstick",
+      "total": 66,
+      "id": 4,
+      "purchase_type": "Token",
+      "purchase_abbr": "BRE",
+      "description": "A special type of bread that increases your team's experience gain by 20%. Lasts for 5 battles."
+    }
+  },
+  {
+    "purchase": {
+      "price": 20.0,
+      "name": "Weapon Purchase",
+      "total": 125,
+      "id": 2,
+      "purchase_type": "Token",
+      "purchase_abbr": "WPN",
+      "description": "Purchase an additional weapon for one fighter. Weapons will be showcased here, but actual forging must be done in the weapon shop."
+    }
+  },
+  {
+    "purchase": {
+      "price": 40.0,
+      "name": "Fresh Booty",
+      "total": 235,
+      "id": 14,
+      "purchase_type": "Token",
+      "purchase_abbr": "FRB",
+      "description": "Revive all Treasure Nodes and reap the bounty of Gold, Tokens, and Epic items once again."
+    }
+  },
+  {
+    "purchase": {
+      "price": 50.0,
+      "name": "Character Slot",
+      "total": 163,
+      "id": 1,
+      "purchase_type": "Token",
+      "purchase_abbr": "CHS",
+      "description": "Add an additional character to your team! Max number of team members is 5."
+    }
+  }
+]

@@ -1,0 +1,106 @@
+[
+{
+  "achievement":{
+    "name":"Spend that Dough!",
+    "created_at":"2011-08-08T03:32:29Z","max_count":5000,"analytic_id":1,"updated_at":"2011-08-26T04:01:45Z","id":1,"task":"Spend 5,000 gold.","description":"You've spent 5,000 gold!"}},
+{
+  "achievement":{
+    "name":"Makin' It Rain!",
+    "created_at":"2011-08-09T05:45:04Z","max_count":15000,"analytic_id":1,"updated_at":"2011-09-09T03:01:16Z","id":2,"task":"Spend 15,000 gold.","description":"Step 1: Hold gold in hand. Step 2: Throw gold into the air. You've spent 15,000 in gold! "}},
+{
+  "achievement":{
+    "name":"Ballin'","created_at":"2011-08-10T01:01:06Z","max_count":25000,"analytic_id":1,"updated_at":"2011-08-22T23:06:23Z","id":3,"task":"Spend 25,000 gold.","description":"Riding in stretch carriages, sipping wine, and attending lavish gatherings. You've spent 25,000 gold! "}},
+{
+  "achievement":{
+    "name":"Blue Money","created_at":"2011-08-10T05:13:39Z","max_count":20,"analytic_id":7,"updated_at":"2011-09-09T03:06:04Z","id":4,"task":"Spend 20 tokens.","description":"You've spent 20 tokens! Keep it coming, there's so much more in the purchase shop!"}},
+{
+  "achievement":{
+    "name":"Blue Rain","created_at":"2011-08-10T05:58:14Z","max_count":50,"analytic_id":7,"updated_at":"2011-09-09T03:06:46Z","id":5,"task":"Spend 50 tokens.","description":"See steps for Makin' it Rain, but repeat with Tokens. You've spent 50 tokens!"}},
+{
+  "achievement":{
+    "name":"Blue Ballin'","created_at":"2011-08-22T02:26:18Z","max_count":100,"analytic_id":7,"updated_at":"2011-09-09T03:06:59Z","id":9,"task":"Spend 100 tokens.","description":"No, not that type of Blue Ballin'! Get your mind out of the gutter. You've spent 100 tokens!"}},
+{
+  "achievement":{
+    "name":"Window Shopping","created_at":"2011-08-22T02:26:59Z","max_count":1,"analytic_id":11,"updated_at":"2011-08-22T23:07:24Z","id":10,"task":"Make your first purchase in the purchase shop.","description":"Just looking around? Thanks for your first purchase!"}},
+{
+  "achievement":{
+    "name":"Loyal Customer","created_at":"2011-08-22T02:29:22Z","max_count":3,"analytic_id":11,"updated_at":"2011-08-22T23:07:46Z","id":11,"task":"Make 3 purchases in the purchase shop.","description":"You're becoming one of our best customers! Keep coming back! You've made 3 purchases!"}},
+{
+  "achievement":{
+    "name":"Shopping Spree","created_at":"2011-08-22T02:31:25Z","max_count":10,"analytic_id":11,"updated_at":"2011-08-22T23:08:06Z","id":12,"task":"Make 10 purchases in the purchase shop.","description":"Holy trinkets! You've made 10 purchases in our shop! You are our best customer!"}},
+{
+  "achievement":{
+    "name":"Change is Good","created_at":"2011-08-22T02:32:51Z","max_count":10,"analytic_id":2,"updated_at":"2011-09-09T03:07:33Z","id":13,"task":"Swap 10 skills.","description":"Embrace it, feel it...ah what the heck. Change up your skills to see what works best."}},
+{
+  "achievement":{
+    "name":"Decisions Decisions...","created_at":"2011-08-22T02:33:47Z","max_count":50,"analytic_id":2,"updated_at":"2011-09-09T03:09:48Z","id":14,"task":"Swap 50 skills.","description":"Wow, you've changed skills 50 times. Maybe try getting another character slot?"}},
+{
+  "achievement":{
+    "name":"Make Up Your Mind!","created_at":"2011-08-22T02:34:33Z","max_count":100,"analytic_id":2,"updated_at":"2011-09-09T03:08:44Z","id":15,"task":"Swap 100 skills.","description":"You've reached 100 skill swaps! Strategizing is an important part of this game."}},
+{
+  "achievement":{
+    "name":"Gearing Up","created_at":"2011-08-22T02:38:32Z","max_count":5,"analytic_id":3,"updated_at":"2011-09-29T19:25:07Z","id":16,"task":"Purchase 5 skills.","description":"New skills = new ways to destroy your enemies! Enjoy."}},
+{
+  "achievement":{
+    "name":"Who Got Skills?","created_at":"2011-08-22T02:39:29Z","max_count":20,"analytic_id":3,"updated_at":"2011-08-22T23:10:55Z","id":17,"task":"Purchase 20 skills.","description":"You're really ramping up your arsenal! Keep going and get all of them!"}},
+{
+  "achievement":{
+    "name":"You Got Skills!","created_at":"2011-08-22T02:40:36Z","max_count":40,"analytic_id":3,"updated_at":"2011-08-22T23:10:40Z","id":18,"task":"Purchase 40 skills.","description":"40 skills bought in total! Make sure you have the correct balance of skills, though!"}},
+{
+  "achievement":{
+    "name":"Match the Outfit","created_at":"2011-08-22T02:42:57Z","max_count":10,"analytic_id":4,"updated_at":"2011-09-09T03:10:08Z","id":19,"task":"Swap 10 accessories.","description":"Don't like your accessories? Go buy more! Remember that the accessories in the shop change everyday!"}},
+{
+  "achievement":{
+    "name":"The Wrong Pair","created_at":"2011-08-22T02:44:34Z","max_count":25,"analytic_id":4,"updated_at":"2011-09-09T03:10:46Z","id":20,"task":"Swap 25 accessories.","description":"Either you can't find the right accessory, or you keep finding better ones. Either way, keep going back to the accessory shop!"}},
+{
+  "achievement":{
+    "name":"Where Are They?","created_at":"2011-08-22T02:51:27Z","max_count":50,"analytic_id":4,"updated_at":"2011-09-09T03:11:03Z","id":21,"task":"Swap 50 accessories.","description":"You really like to change up your accessories! You've swapped 50 accessories! "}},
+{
+  "achievement":{
+    "name":"Diamonds Last Forever","created_at":"2011-08-22T02:54:39Z","max_count":5,"analytic_id":5,"updated_at":"2011-08-22T23:11:53Z","id":22,"task":"Purchase 5 accessories.","description":"You've bought 5 accessories! "}},
+{
+  "achievement":{
+    "name":"Ooh! Shiny!","created_at":"2011-08-22T02:55:30Z","max_count":15,"analytic_id":5,"updated_at":"2011-08-22T23:12:06Z","id":23,"task":"Purchase 15 accessories.","description":"You've bought 15 accessories! Something tells me that you like jewelry?"}},
+{
+  "achievement":{
+    "name":"Bling Bling!","created_at":"2011-08-22T02:56:25Z","max_count":30,"analytic_id":5,"updated_at":"2011-08-22T23:12:21Z","id":24,"task":"Purchase 30 accessories.","description":"The only thing left to buy is a diamond-studded suit! You've bought 30 accessories!"}},
+{
+  "achievement":{
+    "name":"You're Fired!","created_at":"2011-08-22T02:57:22Z","max_count":1,"analytic_id":8,"updated_at":"2011-08-22T23:12:43Z","id":25,"task":"Swap 1 character from your lineup.","description":"I need somebody else to do the job, not you!"}},
+{
+  "achievement":{
+    "name":"I'm Replacing You!","created_at":"2011-08-22T02:58:24Z","max_count":25,"analytic_id":8,"updated_at":"2011-09-09T03:11:45Z","id":26,"task":"Swap characters from your lineup 25x.","description":"Either your character sucks, or you're changing up your strategy. Both ways let you fight better."}},
+{
+  "achievement":{
+    "name":"Is Anybody Any Good?","created_at":"2011-08-22T03:00:03Z","max_count":50,"analytic_id":8,"updated_at":"2011-09-09T03:12:03Z","id":27,"task":"Swap characters from your lineup 50x.","description":"Obviously, you haven't found a solid team yet. Keep looking or maybe get another character slot."}},
+{
+  "achievement":{
+    "name":"Loyalty","created_at":"2011-08-22T03:01:00Z","max_count":5,"analytic_id":9,"updated_at":"2011-08-22T23:13:56Z","id":28,"task":"Login into Idonia 5x.","description":"Thanks for coming back! If you could, please leave us a review and tell others about Idonia!"}},
+{
+  "achievement":{
+    "name":"Hooked","created_at":"2011-08-22T03:01:57Z","max_count":30,"analytic_id":9,"updated_at":"2011-08-31T02:05:13Z","id":29,"task":"Login into Idonia 30x.","description":"You've logged in 30 times! Thanks for your support!"}},
+{
+  "achievement":{
+    "name":"Addicted","created_at":"2011-08-22T03:02:51Z","max_count":100,"analytic_id":9,"updated_at":"2011-08-22T23:14:39Z","id":30,"task":"Login into Idonia 100x and get a special gift in your email.","description":"You've logged in 100 times!! Look inside your email for a nice gift from us!"}},
+{
+  "achievement":{
+    "name":"Sharpen the Steel","created_at":"2011-08-22T03:25:07Z","max_count":1,"analytic_id":10,"updated_at":"2011-08-22T23:15:17Z","id":31,"task":"Upgrade your weapon for the first time.","description":"Cast the molten metal into the mold and temper the blade."}},
+{
+  "achievement":{
+    "name":"Tighten the Hilt","created_at":"2011-08-22T03:25:54Z","max_count":5,"analytic_id":10,"updated_at":"2011-08-22T23:15:31Z","id":32,"task":"Upgrade your weapons 5x.","description":"So that when you strike, your grip is strong and your impact is fierce."}},
+{
+  "achievement":{
+    "name":"Time to Pillage","created_at":"2011-08-22T03:28:09Z","max_count":9,"analytic_id":10,"updated_at":"2011-08-22T23:15:49Z","id":33,"task":"Upgrade your weapons 9x.","description":"Weapons upgraded and grim faces alike, it is time to reap destruction."}},
+{
+  "achievement":{
+    "name":"Om Nom Nom...","created_at":"2011-08-22T03:29:19Z","max_count":1,"analytic_id":13,"updated_at":"2011-08-22T23:16:21Z","id":34,"task":"Consume your first breadstick. Psst...they're in the purchase shop!","description":"Your first Breadstick always tastes the best."}},
+{
+  "achievement":{
+    "name":"Raid the Rations","created_at":"2011-08-22T03:30:25Z","max_count":5,"analytic_id":13,"updated_at":"2011-08-22T23:16:40Z","id":35,"task":"Consume 5 breadsticks.","description":"5 breadsticks consumed! Be careful, carbs are your enemy."}},
+{
+  "achievement":{
+    "name":"What a Fat@$$","created_at":"2011-08-22T03:31:25Z","max_count":10,"analytic_id":13,"updated_at":"2011-08-22T23:17:03Z","id":36,"task":"Consume 10 breadsticks.","description":"10 breadsticks?!?! You know...you don't have to eat ALL OF THEM!"}},
+{
+  "achievement":{
+    "name":"Welcome to Idonia!","created_at":"2011-08-30T02:47:30Z","max_count":1,"analytic_id":9,"updated_at":"2011-08-30T02:47:30Z","id":37,"task":"Create an Account!","description":"Thanks for signing up for an account!  Welcome to the world of Idonia!"}}
+]

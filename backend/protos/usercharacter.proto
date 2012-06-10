@@ -1,0 +1,59 @@
+package com.cboxgames.utils.idonia.types.proto;
+
+option java_package = "com.cboxgames.utils.idonia.types.proto";
+option java_outer_classname = "UserCharacterProtos";
+
+message UserCharacterProto {
+    optional int32 character_id = 1;
+    optional int32 level = 2;
+    optional double strength = 3;
+    optional double vitality = 4;
+    optional double agility = 5;
+    optional double intelligence = 6;
+    optional double will = 7;
+    optional double armor = 8;
+    optional double dodge = 9;
+    optional double physical_crit = 10;
+    optional double spell_crit = 11 [default=0.0] ;
+    optional int32 experience = 12;
+    optional int32 max_experience = 13;
+    optional bool in_lineup = 14 [default=true] ;
+    optional int32 stats = 15 [default=0] ;
+    optional bool weapon_swap = 16 [default=true] ;
+
+    repeated UserCharacterSkillProto userCharacterSkill = 17;
+    repeated UserCharacterAccessoryProto userCharacterAccessory = 18;
+
+    optional int32 id = 19;
+}
+
+message UserCharacterSkillProto {
+    optional int32 skill_id = 1;
+    optional bool in_use = 2;
+    optional int32 id = 3;
+}
+
+message UserCharacterAccessoryProto {
+    optional int32 accessory_id = 1;
+    optional int32 level = 2;
+    optional int32 strength = 3;
+    optional int32 vitality = 4;
+    optional int32 agility = 5;
+    optional int32 intelligence = 6;
+    optional int32 will = 7;
+    optional double armor = 8;
+    optional double dodge = 9;
+    optional double physical_crit = 10;
+    optional double spell_crit = 11;
+    optional int32 experience = 12;
+    optional int32 max_experience = 13;
+    optional int32 tier = 14;
+    optional int32 stats = 15;
+    optional int32 id = 16;
+    optional string accessory_type = 17;
+
+}
+
+message UserCharacterArrayProto {
+    repeated UserCharacterProto userCharacter = 1;
+}

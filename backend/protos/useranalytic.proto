@@ -1,0 +1,13 @@
+package com.cboxgames.utils.idonia.types.proto;
+
+option java_package = "com.cboxgames.utils.idonia.types.proto";
+option java_outer_classname = "UserAnalyticProtos";
+
+message UserAnalyticProto {
+    optional int32 analytic_id = 1;
+    optional int32 count = 2;
+}
+
+message UserAnalyticArrayProto {
+    repeated UserAnalyticProto userAnalytic = 1;
+}

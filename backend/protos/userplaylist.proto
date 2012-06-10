@@ -1,0 +1,17 @@
+package com.cboxgames.utils.idonia.types.proto;
+
+option java_package = "com.cboxgames.utils.idonia.types.proto";
+option java_outer_classname = "UserPlaylistProtos";
+
+message UserPlaylistProto {
+    optional int32 playlist_id = 1;
+    optional int32 rating = 2;
+    optional int32 wins = 3 [default=0] ;
+    optional int32 losses = 4 [default=0] ;
+    optional int32 forfeit_count = 5 [default=0] ;
+    optional int32 disconnect_count = 6 [default=0] ;
+}
+
+message UserPlaylistArrayProto {
+    repeated UserPlaylistProto userPlaylist = 1;
+}

@@ -1,0 +1,27 @@
+package com.cboxgames.utils.idonia.types.proto;
+
+option java_package = "com.cboxgames.utils.idonia.types.proto";
+option java_outer_classname = "UserAccessoryProtos";
+
+message UserAccessoryProto {
+	optional string name = 1;
+	optional int32 will = 2;
+	optional float armor = 3;
+	optional int32 strength = 4;
+	optional string rarity = 5;
+	optional int32 cost = 6;
+	optional float physical_crit = 7;
+	optional int32 vitality = 8;
+	optional float dodge = 9;
+	optional float spell_crit = 10;
+	optional string description = 11;
+	optional int32 display_order = 12;
+	optional string accessory_type = 13;
+	optional int32 intelligence = 14;
+	optional int32 agility = 15;
+	optional int32 level_requirement = 16;
+}
+
+message UserAccessoryArrayProto {
+	repeated UserAccessoryProto userAccessories = 1;
+}

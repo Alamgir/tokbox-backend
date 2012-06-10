@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ElasticBeanStalk - PRODUCTION DATABASE -->
+<Context>
+    <!-- Specify a JDBC datasource -->
+	<Resource name="jdbc/db" auth="Container"
+	type="javax.sql.DataSource" username="cboxgames" password="homeless"
+	driverClassName="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://idoniadb.cavauzh7fnej.us-east-1.rds.amazonaws.com/idonia?zeroDateTimeBehavior=convertToNull"
+	maxActive="150" maxIdle="50" />
+
+
+    <Manager className="org.apache.catalina.session.PersistentManager"
+             saveOnRestart="true"
+             maxActiveSessions="-1"
+             minIdleSwap="-1"
+             maxIdleSwap="-1"
+             maxIdleBackup="-1">
+
+        <Store className="org.apache.catalina.session.JDBCStore"
+               driverName="com.mysql.jdbc.Driver"
+               connectionURL="jdbc:mysql://idoniadb.cavauzh7fnej.us-east-1.rds.amazonaws.com/tomcat?user=cboxgames&amp;password=homeless"
+               sessionTable="tomcat_sessions"
+               sessionAppCol="app_name"
+               sessionIdCol="session_id"
+               sessionDataCol="session_data"
+               sessionValidCol="valid_session"
+               sessionMaxInactiveCol="max_inactive"
+               sessionLastAccessedCol="last_access" />
+
+    </Manager>
+
+</Context>
+
+ <!--Alamgir's local DB-->
+<!--<Context>-->
+    <!--&lt;!&ndash; Specify a JDBC datasource &ndash;&gt;-->
+	<!--<Resource name="jdbc/db" auth="Container"-->
+	<!--type="javax.sql.DataSource" username="root" password="sesame"-->
+	<!--driverClassName="com.mysql.jdbc.Driver"-->
+	<!--url="jdbc:mysql://localhost:3306/idonia"-->
+	<!--maxActive="10" maxIdle="4" />-->
+<!--</Context>-->
+
+
+<!-- Test RDS DB -->
+<!--<Context>-->
+<!--&lt;!&ndash; Specify a JDBC datasource &ndash;&gt;-->
+<!--<Resource name="jdbc/db" auth="Container"-->
+<!--type="javax.sql.DataSource" username="cboxgames" password="homeless"-->
+<!--driverClassName="com.mysql.jdbc.Driver"-->
+<!--url="jdbc:mysql://idoniadb-test.cavauzh7fnej.us-east-1.rds.amazonaws.com/idonia?zeroDateTimeBehavior=convertToNull"-->
+<!--maxActive="10" maxIdle="4" />-->
+<!--</Context>-->

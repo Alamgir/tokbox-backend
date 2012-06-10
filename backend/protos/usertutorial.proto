@@ -1,0 +1,13 @@
+package com.cboxgames.utils.idonia.types.proto;
+
+option java_package = "com.cboxgames.utils.idonia.types.proto";
+option java_outer_classname = "UserTutorialProtos";
+
+message UserTutorialProto {
+	optional int32 tutorial_id = 1;
+	optional bool complete = 2;
+}
+
+message UserTutorialArrayProto {
+	repeated UserTutorialProto userTutorial = 1;
+}

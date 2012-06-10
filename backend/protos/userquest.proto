@@ -1,0 +1,22 @@
+package com.cboxgames.utils.idonia.types.proto;
+
+option java_package = "com.cboxgames.utils.idonia.types.proto";
+option java_outer_classname = "UserQuestProtos";
+
+message UserQuestProto {
+    optional int32 quest_id = 1;
+    optional bool complete = 2 [default=false] ;
+    optional QuestType quest_type = 3;
+    enum QuestType {
+                        Booty = 0;
+                        Node = 1;
+                        Boss = 2;
+                    }
+    optional int32 node_id = 4;
+    optional int32 mob_id = 5;
+    optional string updated_at = 6;
+}
+
+message UserQuestArrayProto {
+    repeated UserQuestProto userQuest = 1;
+}
