@@ -3,6 +3,12 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Backend_war</output-path>
     <root id="archive" name="Backend_war.war">
       <element id="artifact" artifact-name="Backend:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/apache_commons_codec_1.6.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/scribe-1.3.0.jar" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

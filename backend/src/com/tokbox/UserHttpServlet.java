@@ -1,15 +1,28 @@
 package com.tokbox;
 
+import com.cboxgames.idonia.backend.commons.Constants;
+import com.cboxgames.idonia.backend.commons.ResponseTools;
 import com.cboxgames.idonia.backend.commons.UriToArgv;
 import com.cboxgames.utils.json.JsonConverter;
+import com.tokbox.service.TokBoxOAuth;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.scribe.builder.api.DropBoxApi;
+import org.scribe.model.Token;
+import org.scribe.model.Verifier;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+
+import static com.tokbox.UserHttpServlet.RequestType.*;
+import static com.tokbox.UserHttpServlet.RequestType.URT_ACCESS_TOKEN;
+import static com.tokbox.UserHttpServlet.RequestType.URT_DETAILS;
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,9 +49,82 @@ public class UserHttpServlet extends HttpServlet {
         
         String uri_str = request.getRequestURI();
         UriToArgv uta = new UriToArgv(uri_str, "users");
+        if (uta.getBaseIndex() >= uta.getArgv().length) {
+            ResponseTools.prepareResponseJson(response, _mapper, uri_str + " is not supported by " + this.getServletName(),
+                                              Constants.SC_BAD_REQUEST);
+            return;
+        }
+        
+        RequestTypeUserId ret = setGetRequestType(uta);
+        RequestType req_type = ret.getRequestType();
+        int user_id = ret.getUserId();
+
+        if (req_type == URT_UNDEFINED)	{
+            ResponseTools.prepareResponseJson(response, _mapper, uri_str + " is not supported by " + this.getServletName(),
+                                              Constants.SC_BAD_REQUEST);
+            return;
+        }
+
+        switch (req_type) {
+            case URT_REQUEST_TOKEN: {
+                Token request_token = TokBoxOAuth.service.getRequestToken();
+                if (request_token != null) {
+                    ResponseTools.prepareResponseJson(response, _mapper, request_token,Constants.SC_OK);
+                }
+                break;
+            }
+        }
 
     }
 
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws IOException, ServletException {
+
+        String uri_str = request.getRequestURI();
+        UriToArgv uta = new UriToArgv(uri_str, "users");
+        if (uta.getBaseIndex() >= uta.getArgv().length) {
+            ResponseTools.prepareResponseJson(response, _mapper, uri_str + " is not supported by " + this.getServletName(),
+                                              Constants.SC_BAD_REQUEST);
+            return;
+        }
+
+        RequestTypeUserId ret = setPostRequestType(uta);
+        RequestType req_type = ret.getRequestType();
+        int user_id = ret.getUserId();
+
+        if (req_type == URT_UNDEFINED)	{
+            ResponseTools.prepareResponseJson(response, _mapper, uri_str + " is not supported by " + this.getServletName(),
+                                              Constants.SC_BAD_REQUEST);
+            return;
+        }
+
+        switch (req_type) {
+            case URT_ACCESS_TOKEN: {
+                
+                InputStream stream = request.getInputStream();
+                String req_token = "";
+                String req_secret = "";
+                @SuppressWarnings("unchecked")
+                Map<String, Object> auth_data = _mapper.readValue(stream, Map.class);
+
+                if (auth_data.containsKey("request_token")) {
+                    req_token = (String)auth_data.get("request_token");
+                }
+                
+                if (auth_data.containsKey("request_secret")) {
+                    req_secret = (String)auth_data.get("request_secret");
+                }
+                Token token = new Token(req_token, req_secret);
+                Verifier verifier = new Verifier("");
+                Token access_token = TokBoxOAuth.service.getAccessToken(token, verifier);
+                if (access_token != null) {
+                    ResponseTools.prepareResponseJson(response, _mapper, access_token,Constants.SC_OK);
+                }
+                break;
+
+            }
+        }
+    }
 
     public static enum RequestType {
 
@@ -288,6 +374,11 @@ public class UserHttpServlet extends HttpServlet {
 
             if (indx >= argv.length) {
                 return rt; // UNDEFINED
+            }
+
+            if (argv[indx].equals("auth")) {
+                rt.setRequestType(URT_ACCESS_TOKEN); // POST
+                return rt;
             }
 
             if (argv[indx].equals("exist")) {

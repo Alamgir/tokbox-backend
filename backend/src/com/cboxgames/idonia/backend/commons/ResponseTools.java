@@ -31,6 +31,7 @@ public class ResponseTools {
 		response.setContentType("application/json");
 		response.setCharacterEncoding(ENCODING_JSON);
 		response.setStatus(code);
+        response.addHeader("Access-Control-Allow-Origin", "http://localhost");
 		if (data != null)
 			mapper.writeValue(response.getWriter(), data);
 	}

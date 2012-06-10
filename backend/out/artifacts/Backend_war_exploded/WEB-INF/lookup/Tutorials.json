@@ -1,0 +1,68 @@
+[
+  {
+    "tutorial": {
+      "id":1,
+      "name":"Skill Shop Tutorial"
+    }
+  },
+  {
+    "tutorial": {  
+      "id":2,
+      "name":"Weapon Shop Tutorial"
+    }
+  },
+  {
+    "tutorial": {
+      "id":3,
+      "name":"Accessory Shop Tutorial"
+    }
+  },
+  {
+    "tutorial": {
+      "id":4,
+      "name":"Armor Shop Tutorial"
+    }
+  },
+  {
+    "tutorial": {
+      "id":5,
+      "name":"Battle Shop Tutorial"
+    }
+  },
+  {
+    "tutorial": {
+      "id":6,
+      "name":"Skill Swap Tutorial"
+    }
+  },
+  {
+    "tutorial": {
+      "id":7,
+      "name":"Equipment Swap Tutorial"
+    }
+  },
+  {
+    "tutorial": {
+      "id":8,
+      "name":"Training Grounds Tutorial"
+    }
+  },
+  {
+    "tutorial": {
+      "id":9,
+      "name":"Arena Tutorial"
+    }
+  },
+  {
+    "tutorial": {
+      "id":10,
+      "name":"Map Tutorial"
+    }
+  },
+  {
+    "tutorial": {
+      "id":11,
+      "name":"Town Tutorial"
+    }
+  }
+]

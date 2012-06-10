@@ -9,6 +9,8 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="lib1" />
           <element id="library" level="project" name="lib" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/scribe-1.3.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/apache_commons_codec_1.6.jar" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Backend/web/Web" />
