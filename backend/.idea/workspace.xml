@@ -19,33 +19,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java" line="49" class="com.tokbox.UserHttpServlet" package="com.tokbox">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java" line="69" class="com.tokbox.UserHttpServlet" package="com.tokbox">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java" line="103" class="com.tokbox.UserHttpServlet" package="com.tokbox">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java" line="50" class="com.tokbox.UserHttpServlet" package="com.tokbox">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -104,10 +78,10 @@
           <file leaf-file-name="UserHttpServlet.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="121" column="17" selection-start="4882" selection-end="4882" vertical-scroll-proportion="0.7433265">
+                <state line="144" column="22" selection-start="5679" selection-end="5679" vertical-scroll-proportion="2.9712527">
                   <folding>
-                    <element signature="e#1121#1148#0" expanded="true" />
-                    <element signature="e#4067#4097#1" expanded="true" />
+                    <element signature="e#1166#1193#0" expanded="true" />
+                    <element signature="e#4476#4506#1" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -849,10 +823,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="17" selection-start="4882" selection-end="4882" vertical-scroll-proportion="0.7433265">
+        <state line="144" column="22" selection-start="5679" selection-end="5679" vertical-scroll-proportion="2.9712527">
           <folding>
-            <element signature="e#1121#1148#0" expanded="true" />
-            <element signature="e#4067#4097#1" expanded="true" />
+            <element signature="e#1166#1193#0" expanded="true" />
+            <element signature="e#4476#4506#1" expanded="true" />
           </folding>
         </state>
       </provider>

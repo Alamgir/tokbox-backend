@@ -8,6 +8,7 @@ import com.tokbox.service.TokBoxOAuth;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.scribe.builder.api.DropBoxApi;
+import org.scribe.exceptions.OAuthException;
 import org.scribe.model.Token;
 import org.scribe.model.Verifier;
 
@@ -67,10 +68,20 @@ public class UserHttpServlet extends HttpServlet {
 
         switch (req_type) {
             case URT_REQUEST_TOKEN: {
-                Token request_token = TokBoxOAuth.service.getRequestToken();
-                if (request_token != null) {
-                    ResponseTools.prepareResponseJson(response, _mapper, request_token,Constants.SC_OK);
+                try {
+                    Token request_token = TokBoxOAuth.service.getRequestToken();
+                    if (request_token != null) {
+                        ResponseTools.prepareResponseJson(response, _mapper, request_token,Constants.SC_OK);
+                    }
+                    else {
+                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    }
                 }
+                catch (OAuthException e) {
+                    e.printStackTrace();
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                }
+
                 break;
             }
         }
@@ -116,12 +127,22 @@ public class UserHttpServlet extends HttpServlet {
                 }
                 Token token = new Token(req_token, req_secret);
                 Verifier verifier = new Verifier("");
-                Token access_token = TokBoxOAuth.service.getAccessToken(token, verifier);
-                if (access_token != null) {
-                    ResponseTools.prepareResponseJson(response, _mapper, access_token,Constants.SC_OK);
-                }
-                break;
 
+                try {
+                    Token access_token = TokBoxOAuth.service.getAccessToken(token, verifier);
+                    if (access_token != null) {
+                        ResponseTools.prepareResponseJson(response, _mapper, access_token,Constants.SC_OK);
+                    }
+                    else {
+                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    }
+                }
+                catch (OAuthException e) {
+                    e.printStackTrace();
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                }
+
+                break;
             }
         }
     }
