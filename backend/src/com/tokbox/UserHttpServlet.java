@@ -3,27 +3,32 @@ package com.tokbox;
 import com.cboxgames.idonia.backend.commons.Constants;
 import com.cboxgames.idonia.backend.commons.ResponseTools;
 import com.cboxgames.idonia.backend.commons.UriToArgv;
+import com.cboxgames.idonia.backend.commons.authentication.AuthenticateUser;
 import com.cboxgames.utils.json.JsonConverter;
 import com.tokbox.service.TokBoxOAuth;
+import com.tokbox.types.Entity;
+import com.tokbox.types.User;
+import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.scribe.builder.api.DropBoxApi;
 import org.scribe.exceptions.OAuthException;
-import org.scribe.model.Token;
-import org.scribe.model.Verifier;
+import org.scribe.model.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.tokbox.UserHttpServlet.RequestType.*;
-import static com.tokbox.UserHttpServlet.RequestType.URT_ACCESS_TOKEN;
-import static com.tokbox.UserHttpServlet.RequestType.URT_DETAILS;
+import static com.tokbox.UserHttpServlet.RequestType.URT_LOGIN;
+import static com.tokbox.UserHttpServlet.RequestType.URT_USER_INFO;
 
 /**
  * Created by IntelliJ IDEA.
@@ -41,7 +46,7 @@ public class UserHttpServlet extends HttpServlet {
         _json_converter = JsonConverter.getInstance();
         _mapper = new ObjectMapper();
         _mapper.getSerializationConfig().setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL); // no more null-valued properties
-        
+        _mapper.getDeserializationConfig().addMixInAnnotations(Entity.class, Entity.EntityFilter.class);
         
     }
     
@@ -82,6 +87,44 @@ public class UserHttpServlet extends HttpServlet {
                     response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 }
 
+                break;
+            }
+            case URT_USER_INFO: {
+                HttpSession session = request.getSession();
+                Token access_token = (Token)session.getAttribute("access_token");
+
+                try {
+                    HashMap<String,Object> dp_data_map = new HashMap<String,Object>();
+                    dp_data_map.put("access_token", access_token);
+                    if (access_token != null) {
+
+                        OAuthRequest user_data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/account/info");
+                        TokBoxOAuth.service.signRequest(access_token, user_data_request);
+                        Response user_data_response = user_data_request.send();
+                        if (user_data_response.isSuccessful()) {
+                            User user_data = _mapper.readValue(user_data_response.getBody(), User.class);
+                            dp_data_map.put("user_data", user_data);
+                        }
+
+                        OAuthRequest data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/metadata/dropbox/");
+                        TokBoxOAuth.service.signRequest(access_token, data_request);
+                        Response data_response = data_request.send();
+                        if (data_response.isSuccessful()) {
+                            Entity root_data = _mapper.readValue(data_response.getBody(), Entity.class);
+                            dp_data_map.put("root_data", root_data);
+                        }
+
+                        ResponseTools.prepareResponseJson(response, _mapper,dp_data_map,Constants.SC_OK);
+
+                    }
+                    else {
+                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    }
+                }
+                catch (OAuthException e) {
+                    e.printStackTrace();
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                }
                 break;
             }
         }
@@ -130,8 +173,34 @@ public class UserHttpServlet extends HttpServlet {
 
                 try {
                     Token access_token = TokBoxOAuth.service.getAccessToken(token, verifier);
+                    HashMap<String,Object> dp_data_map = new HashMap<String,Object>();
+                    dp_data_map.put("access_token", access_token);
                     if (access_token != null) {
-                        ResponseTools.prepareResponseJson(response, _mapper, access_token,Constants.SC_OK);
+                        //User is authenticated from dropbox
+                        //Authenticate the user with TokBox using a cookie
+                        AuthenticateUser.authenticate(request, response);
+                        //Store the access_token object in the session
+                        HttpSession session = request.getSession();
+                        session.setAttribute("access_token", access_token);
+
+                        OAuthRequest user_data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/account/info");
+                        TokBoxOAuth.service.signRequest(access_token, user_data_request);
+                        Response user_data_response = user_data_request.send();
+                        if (user_data_response.isSuccessful()) {
+                            User user_data = _mapper.readValue(user_data_response.getBody(), User.class);
+                            dp_data_map.put("user_data", user_data);
+                        }
+
+                        OAuthRequest data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/metadata/dropbox/");
+                        TokBoxOAuth.service.signRequest(access_token, data_request);
+                        Response data_response = data_request.send();
+                        if (data_response.isSuccessful()) {
+                            Entity root_data = _mapper.readValue(data_response.getBody(), Entity.class);
+                            dp_data_map.put("root_data", root_data);
+                        }
+
+                        ResponseTools.prepareResponseJson(response, _mapper,dp_data_map,Constants.SC_OK);
+
                     }
                     else {
                         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -141,7 +210,72 @@ public class UserHttpServlet extends HttpServlet {
                     e.printStackTrace();
                     response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 }
+                catch (JsonParseException e) {
+                    e.printStackTrace();
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                }
 
+                break;
+            }
+            case URT_LOGIN: {
+                InputStream stream = request.getInputStream();
+                String access_token = "";
+                String access_secret = "";
+                @SuppressWarnings("unchecked")
+                Map<String, Object> auth_data = _mapper.readValue(stream, Map.class);
+
+                if (auth_data.containsKey("access_token")) {
+                    access_token = (String)auth_data.get("access_token");
+                }
+
+                if (auth_data.containsKey("access_secret")) {
+                    access_secret = (String)auth_data.get("access_secret");
+                }
+                Token token = new Token(access_token, access_secret);
+
+                try {
+                    if (token != null) {
+                        HashMap<String,Object> dp_data_map = new HashMap<String,Object>();
+                        dp_data_map.put("access_token", access_token);
+
+
+                        OAuthRequest user_data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/account/info");
+                        TokBoxOAuth.service.signRequest(token, user_data_request);
+                        Response user_data_response = user_data_request.send();
+                        if (user_data_response.isSuccessful()) {
+                            User user_data = _mapper.readValue(user_data_response.getBody(), User.class);
+                            dp_data_map.put("user_data", user_data);
+                        }
+                        else {
+                            //access token has expired, get a new one
+                            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                            return;
+                        }
+
+                        OAuthRequest data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/metadata/dropbox/");
+                        TokBoxOAuth.service.signRequest(token, data_request);
+                        Response data_response = data_request.send();
+                        if (data_response.isSuccessful()) {
+                            Entity root_data = _mapper.readValue(data_response.getBody(), Entity.class);
+                            dp_data_map.put("root_data", root_data);
+                        }
+
+                        ResponseTools.prepareResponseJson(response, _mapper,dp_data_map,Constants.SC_OK);
+
+                    }
+                    else {
+                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        return;
+                    }
+                }
+                catch (OAuthException e) {
+                    e.printStackTrace();
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                }
+                catch (JsonParseException e) {
+                    e.printStackTrace();
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                }
                 break;
             }
         }
@@ -150,7 +284,9 @@ public class UserHttpServlet extends HttpServlet {
     public static enum RequestType {
 
         URT_REQUEST_TOKEN, //GET request_token from dropbox </users/req_auth>
+        URT_USER_INFO, //GET </users/info>
         URT_ACCESS_TOKEN, //POST </users/auth>
+        URT_LOGIN, //POST </users/login>
         
         URT_DETAILS, // GET details for all users < /users/details >
         URT_TAPJOY, // GET < /users/tapjoy >
@@ -208,6 +344,10 @@ public class UserHttpServlet extends HttpServlet {
                 }
                 if (argv[indx].equals("req_auth")) {
                     rt.setRequestType(URT_REQUEST_TOKEN);
+                    return rt; // GET
+                }
+                if (argv[indx].equals("info")) {
+                    rt.setRequestType(URT_USER_INFO);
                     return rt; // GET
                 }
                 if (argv[indx].equals("tapjoy")) {
@@ -399,6 +539,10 @@ public class UserHttpServlet extends HttpServlet {
 
             if (argv[indx].equals("auth")) {
                 rt.setRequestType(URT_ACCESS_TOKEN); // POST
+                return rt;
+            }
+            if (argv[indx].equals("login")) {
+                rt.setRequestType(URT_LOGIN); // POST
                 return rt;
             }
 
