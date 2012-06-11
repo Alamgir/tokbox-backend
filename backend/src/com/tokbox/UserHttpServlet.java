@@ -176,12 +176,7 @@ public class UserHttpServlet extends HttpServlet {
                     HashMap<String,Object> dp_data_map = new HashMap<String,Object>();
                     dp_data_map.put("access_token", access_token);
                     if (access_token != null) {
-                        //User is authenticated from dropbox
-                        //Authenticate the user with TokBox using a cookie
-                        AuthenticateUser.authenticate(request, response);
-                        //Store the access_token object in the session
-                        HttpSession session = request.getSession();
-                        session.setAttribute("access_token", access_token);
+                        authenticateUser(request, response, access_token);
 
                         OAuthRequest user_data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/account/info");
                         TokBoxOAuth.service.signRequest(access_token, user_data_request);
@@ -236,7 +231,7 @@ public class UserHttpServlet extends HttpServlet {
                 try {
                     if (token != null) {
                         HashMap<String,Object> dp_data_map = new HashMap<String,Object>();
-                        dp_data_map.put("access_token", access_token);
+                        dp_data_map.put("access_token", token);
 
 
                         OAuthRequest user_data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/account/info");
@@ -251,6 +246,10 @@ public class UserHttpServlet extends HttpServlet {
                             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                             return;
                         }
+                        
+                        //Dropbox is still responding to the access token
+                        //Reauthenticate the user
+                        authenticateUser(request, response, token);
 
                         OAuthRequest data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/metadata/dropbox/");
                         TokBoxOAuth.service.signRequest(token, data_request);
@@ -279,6 +278,16 @@ public class UserHttpServlet extends HttpServlet {
                 break;
             }
         }
+    }
+    
+    private static void authenticateUser(HttpServletRequest request, HttpServletResponse response, Token access_token)
+        throws ServletException {
+        //User is authenticated from dropbox
+        //Authenticate the user with TokBox using a cookie
+        AuthenticateUser.authenticate(request, response);
+        //Store the access_token object in the session
+        HttpSession session = request.getSession();
+        session.setAttribute("access_token", access_token);
     }
 
     public static enum RequestType {
