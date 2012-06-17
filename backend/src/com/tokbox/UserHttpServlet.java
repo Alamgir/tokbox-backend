@@ -79,12 +79,12 @@ public class UserHttpServlet extends HttpServlet {
                         ResponseTools.prepareResponseJson(response, _mapper, request_token,Constants.SC_OK);
                     }
                     else {
-                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                     }
                 }
                 catch (OAuthException e) {
                     e.printStackTrace();
-                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                 }
 
                 break;
@@ -118,12 +118,12 @@ public class UserHttpServlet extends HttpServlet {
 
                     }
                     else {
-                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                     }
                 }
                 catch (OAuthException e) {
                     e.printStackTrace();
-                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                 }
                 break;
             }
@@ -243,7 +243,7 @@ public class UserHttpServlet extends HttpServlet {
                         }
                         else {
                             //access token has expired, get a new one
-                            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                            ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                             return;
                         }
                         
@@ -263,17 +263,17 @@ public class UserHttpServlet extends HttpServlet {
 
                     }
                     else {
-                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                         return;
                     }
                 }
                 catch (OAuthException e) {
                     e.printStackTrace();
-                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                 }
                 catch (JsonParseException e) {
                     e.printStackTrace();
-                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                 }
                 break;
             }

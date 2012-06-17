@@ -127,12 +127,12 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="UserHttpServlet.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="UserHttpServlet.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="194" column="25" selection-start="8841" selection-end="8841" vertical-scroll-proportion="0.68774706">
+                <state line="260" column="0" selection-start="12226" selection-end="12226" vertical-scroll-proportion="0.0">
                   <folding>
-                    <element signature="e#10435#10450#0" expanded="true" />
+                    <element signature="e#10555#10570#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -147,10 +147,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ResponseTools.java" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="ResponseTools.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/ResponseTools.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="35" column="0" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.0">
+                <state line="35" column="0" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.3715415">
                   <folding />
                 </state>
               </provider>
@@ -265,8 +265,8 @@
         <option value="$PROJECT_DIR$/src/com/tokbox/service/TokBoxOAuth.java" />
         <option value="$PROJECT_DIR$/src/com/tokbox/types/User.java" />
         <option value="$PROJECT_DIR$/src/com/tokbox/types/Entity.java" />
-        <option value="$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/ResponseTools.java" />
         <option value="$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/ResponseTools.java" />
       </list>
     </option>
   </component>
@@ -738,8 +738,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="7" />
-    <editor active="false" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -757,7 +757,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2008547" sideWeight="0.6012793" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2008547" sideWeight="0.6012793" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -898,19 +898,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/ResponseTools.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="260" column="0" selection-start="12226" selection-end="12226" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#10555#10570#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/ResponseTools.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="25" selection-start="8841" selection-end="8841" vertical-scroll-proportion="0.68774706">
-          <folding>
-            <element signature="e#10435#10450#0" expanded="true" />
-          </folding>
+        <state line="35" column="0" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.3715415">
+          <folding />
         </state>
       </provider>
     </entry>
