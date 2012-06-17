@@ -27,11 +27,11 @@ public class ResponseTools {
 	 */
 	public static void prepareResponseJson(HttpServletResponse response, ObjectMapper mapper, Object data,
 			int code) throws JsonGenerationException, JsonMappingException, IOException {
-		
+
+        response.addHeader("Access-Control-Allow-Origin", "http://localhost:83");
 		response.setContentType("application/json");
 		response.setCharacterEncoding(ENCODING_JSON);
 		response.setStatus(code);
-        response.addHeader("Access-Control-Allow-Origin", "http://localhost");
 		if (data != null)
 			mapper.writeValue(response.getWriter(), data);
 	}

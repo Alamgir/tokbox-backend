@@ -198,16 +198,16 @@ public class UserHttpServlet extends HttpServlet {
 
                     }
                     else {
-                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                     }
                 }
                 catch (OAuthException e) {
                     e.printStackTrace();
-                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                 }
                 catch (JsonParseException e) {
                     e.printStackTrace();
-                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                 }
 
                 break;
