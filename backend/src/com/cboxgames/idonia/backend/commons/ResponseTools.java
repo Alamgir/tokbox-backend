@@ -29,6 +29,7 @@ public class ResponseTools {
 			int code) throws JsonGenerationException, JsonMappingException, IOException {
 
         response.addHeader("Access-Control-Allow-Origin", "http://localhost:83");
+        response.addHeader("Access-Control-Allow-Credentials", "true");
 		response.setContentType("application/json");
 		response.setCharacterEncoding(ENCODING_JSON);
 		response.setStatus(code);

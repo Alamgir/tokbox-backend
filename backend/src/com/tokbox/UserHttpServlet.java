@@ -95,8 +95,8 @@ public class UserHttpServlet extends HttpServlet {
 
                 try {
                     HashMap<String,Object> dp_data_map = new HashMap<String,Object>();
-                    dp_data_map.put("access_token", access_token);
-                    if (access_token != null) {
+
+                    if (access_token != null) {dp_data_map.put("access_token", access_token);
 
                         OAuthRequest user_data_request = new OAuthRequest(Verb.GET, "https://api.dropbox.com/1/account/info");
                         TokBoxOAuth.service.signRequest(access_token, user_data_request);
@@ -125,6 +125,45 @@ public class UserHttpServlet extends HttpServlet {
                     e.printStackTrace();
                     ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                 }
+                break;
+            }
+            case URT_PATH: {
+                HttpSession session = request.getSession(false);
+                Token access_token = (Token)session.getAttribute("access_token");
+
+                try {
+                    if (access_token != null) {
+//                        InputStream stream = request.getInputStream();
+//                        Map<String, Object> data = _mapper.readValue(stream, Map.class);
+//                        String path_string = (String)data.get("path");
+                        
+                        String path_string = request.getParameter("path");
+
+                        StringBuilder path_builder = new StringBuilder("https://api.dropbox.com/1/metadata/");
+                        path_builder.append(path_string);
+                        
+                        OAuthRequest path_request = new OAuthRequest(Verb.GET, path_builder.toString());
+                        TokBoxOAuth.service.signRequest(access_token, path_request);
+                        Response path_response = path_request.send();
+                        Entity path_data = new Entity();
+                        if (path_response.isSuccessful()) {
+                            path_data = _mapper.readValue(path_response.getBody(), Entity.class);
+                            ResponseTools.prepareResponseJson(response, _mapper, path_data, Constants.SC_OK);
+                        }
+                        else {
+                            ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
+                        }
+                        
+                    }
+                    else {
+                        ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
+                    }
+                }
+                catch (OAuthException e) {
+                    e.printStackTrace();
+                    ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
+                }
+                
                 break;
             }
         }
@@ -288,12 +327,15 @@ public class UserHttpServlet extends HttpServlet {
         //Store the access_token object in the session
         HttpSession session = request.getSession();
         session.setAttribute("access_token", access_token);
+        session.setMaxInactiveInterval(Constants.MAX_SESSION_INTERVAL_ONE_DAY);
     }
 
     public static enum RequestType {
 
         URT_REQUEST_TOKEN, //GET request_token from dropbox </users/req_auth>
         URT_USER_INFO, //GET </users/info>
+        URT_PATH, //GET </metadata>
+        
         URT_ACCESS_TOKEN, //POST </users/auth>
         URT_LOGIN, //POST </users/login>
         
@@ -357,6 +399,10 @@ public class UserHttpServlet extends HttpServlet {
                 }
                 if (argv[indx].equals("info")) {
                     rt.setRequestType(URT_USER_INFO);
+                    return rt; // GET
+                }
+                if (argv[indx].equals("metadata")) {
+                    rt.setRequestType(URT_PATH);
                     return rt; // GET
                 }
                 if (argv[indx].equals("tapjoy")) {
