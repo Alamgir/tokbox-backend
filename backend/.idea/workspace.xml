@@ -136,6 +136,58 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/listener/GraphDBListener.java" line="21" class="com.tokbox.listener.GraphDBListener" package="com.tokbox.listener">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/listener/GraphDBListener.java" line="32" class="com.tokbox.listener.GraphDBListener" package="com.tokbox.listener">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java" line="27" class="com.tokbox.graphdb.TokBoxDB" package="com.tokbox.graphdb">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/listener/GraphDBListener.java" line="33" class="com.tokbox.listener.GraphDBListener" package="com.tokbox.listener">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
@@ -179,28 +231,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="UserHttpServlet.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="UserHttpServlet.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="145" column="84" selection-start="6650" selection-end="6650" vertical-scroll-proportion="0.6967213">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AuthenticationFilter.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/filters/AuthenticationFilter.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="45" column="51" selection-start="2025" selection-end="2025" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AuthenticateUser.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/authentication/AuthenticateUser.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="61" column="37" selection-start="2124" selection-end="2124" vertical-scroll-proportion="0.0">
+                <state line="216" column="47" selection-start="9806" selection-end="9806" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -218,7 +252,7 @@
           <file leaf-file-name="OAuthListener.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/tokbox/listener/OAuthListener.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="27" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0">
+                <state line="25" column="5" selection-start="794" selection-end="794" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -227,7 +261,7 @@
           <file leaf-file-name="TokBoxOAuth.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/tokbox/service/TokBoxOAuth.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="22" column="34" selection-start="682" selection-end="682" vertical-scroll-proportion="0.0">
+                <state line="28" column="1" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -260,23 +294,23 @@
               </provider>
             </entry>
           </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="UserHttpServlet.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/UserHttpServlet.java">
+          <file leaf-file-name="GraphDBListener.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/tokbox/listener/GraphDBListener.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1341" column="30" selection-start="64894" selection-end="64894" vertical-scroll-proportion="0.03937008">
+                <state line="34" column="10" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.32135728">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="User.class" pinned="false" current="false" current-in-tab="false">
-            <entry file="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/cbox_utils.jar!/com/cboxgames/utils/idonia/types/User.class">
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="UserHttpServlet.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/UserHttpServlet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="53" column="4" selection-start="2229" selection-end="2229" vertical-scroll-proportion="0.0">
+                <state line="1101" column="41" selection-start="54437" selection-end="54437" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -300,6 +334,35 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="67" column="47" selection-start="2799" selection-end="2799" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/tokbox/types/User.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="11" column="19" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TokBoxDB.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="115" column="0" selection-start="3969" selection-end="3969" vertical-scroll-proportion="0.68503934">
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-second>
     </splitter>
@@ -318,14 +381,16 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/com/tokbox/service/OAuthService.java" />
-        <option value="$PROJECT_DIR$/src/com/tokbox/listener/OAuthListener.java" />
         <option value="$PROJECT_DIR$/src/com/tokbox/service/DropboxAPI.java" />
         <option value="$PROJECT_DIR$/src/com/tokbox/types/User.java" />
         <option value="$PROJECT_DIR$/src/com/tokbox/types/Entity.java" />
         <option value="$PROJECT_DIR$/src/com/tokbox/service/TokBoxOAuth.java" />
-        <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/ResponseTools.java" />
         <option value="$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/tokbox/listener/OAuthListener.java" />
+        <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java" />
+        <option value="$PROJECT_DIR$/src/com/tokbox/listener/GraphDBListener.java" />
       </list>
     </option>
   </component>
@@ -373,6 +438,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -545,6 +611,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tokbox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphdb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tokbox-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="backend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -601,24 +693,53 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tokbox-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="OverrideImplement.combined" value="true" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RecentsManager">
@@ -725,6 +846,7 @@
     </configuration>
     <configuration default="false" name="Tomcat 7" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7">
       <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Backend:war exploded">
           <settings>
@@ -798,25 +920,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39867842" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39867842" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19871795" sideWeight="0.23678415" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15491453" sideWeight="0.6013216" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15224358" sideWeight="0.6013216" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -881,29 +1003,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebContent/META-INF/context.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/db/user/UserDBSQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="51" selection-start="1195" selection-end="1195" vertical-scroll-proportion="0.59090906" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tokbox/types/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="24" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="42" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.7692308" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/filters/AuthenticationFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="51" selection-start="2025" selection-end="2025" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/authentication/AuthenticateUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="37" selection-start="2124" selection-end="2124" vertical-scroll-proportion="0.0" />
+        <state line="110" column="37" selection-start="5010" selection-end="5010" vertical-scroll-proportion="0.40983605" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/ResponseTools.java">
@@ -913,12 +1015,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tokbox/listener/OAuthListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="27" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tokbox/service/TokBoxOAuth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="34" selection-start="682" selection-end="682" vertical-scroll-proportion="0.0" />
+        <state line="25" column="5" selection-start="794" selection-end="794" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tokbox/types/Entity.java">
@@ -936,11 +1033,9 @@
         <state line="11" column="24" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/cbox_utils.jar!/com/cboxgames/utils/idonia/types/User.class">
+    <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/UserHttpServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="4" selection-start="2229" selection-end="2229" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1101" column="41" selection-start="54437" selection-end="54437" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/listener/LoggerInit.java">
@@ -953,16 +1048,47 @@
         <state line="45" column="18" selection-start="1454" selection-end="1454" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/UserHttpServlet.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1341" column="30" selection-start="64894" selection-end="64894" vertical-scroll-proportion="0.03937008">
-          <folding />
-        </state>
+        <state line="67" column="47" selection-start="2799" selection-end="2799" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tokbox/types/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="19" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tokbox/UserHttpServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="84" selection-start="6650" selection-end="6650" vertical-scroll-proportion="0.6967213">
+        <state line="216" column="47" selection-start="9806" selection-end="9806" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tokbox/service/TokBoxOAuth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="1" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://E:/Program Files/JDK/jre/lib/ext/catalina.jar!/org/apache/catalina/core/StandardContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="730" column="19" selection-start="33984" selection-end="33984" vertical-scroll-proportion="0.3319672">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="0" selection-start="3969" selection-end="3969" vertical-scroll-proportion="0.68503934">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tokbox/listener/GraphDBListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="10" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.32135728">
           <folding />
         </state>
       </provider>

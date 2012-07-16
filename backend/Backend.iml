@@ -39,6 +39,37 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../Downloads/jersey-client-1.12.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../Downloads/jersey-core-1.12.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../neo4j-community-1.8.M05/lib" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="http://api.neo4j.org/1.8.M05/" />
+          <root url="http://components.neo4j.org/neo4j/1.7/apidocs/" />
+        </JAVADOC>
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../../neo4j-community-1.8.M05/lib" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
