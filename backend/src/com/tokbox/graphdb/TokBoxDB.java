@@ -1,12 +1,14 @@
 package com.tokbox.graphdb;
 
 
+import com.tokbox.types.Entity;
 import com.tokbox.types.User;
 import org.neo4j.graphdb.*;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.graphdb.index.Index;
 import org.neo4j.graphdb.index.IndexManager;
 
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -19,12 +21,25 @@ import java.util.HashMap;
 public class TokBoxDB {
     public static GraphDatabaseService graphDB;
     public static Index<Node> user_index;
+    public static Index<Node> entity_index;
     public static Node user_reference_node;
+    public static Node entity_reference_node;
+
+    private static enum RelTypes implements RelationshipType {
+        USER_REFERENCE,
+        ENTITY_REFERENCE,
+        USER,
+        ENTITY,
+        AUTHOR,
+        COMMENT
+    }
     
     public static void init() {
         graphDB = new GraphDatabaseFactory().newEmbeddedDatabase("E:\\Alamgir\\neo4jdb");
         user_index = graphDB.index().forNodes("users");
+        entity_index = graphDB.index().forNodes("entities");
         user_reference_node = getUserRefNode();
+        entity_reference_node = getEntityRefNode();
         registerShutdownHook(graphDB);
     }
     
@@ -57,12 +72,27 @@ public class TokBoxDB {
         }
     }
 
-    private static enum RelTypes implements RelationshipType {
-        USER_REFERENCE,
-        USER,
-        AUTHOR,
-        COMMENT
+    private static Node getEntityRefNode() {
+        //check for node with relationship USERS_REFERENCE
+        Transaction tx = graphDB.beginTx();
+        try {
+            Iterable<Relationship> entity_ref = graphDB.getReferenceNode().getRelationships(Direction.OUTGOING, RelTypes.ENTITY_REFERENCE);
+            if (entity_ref.iterator().hasNext()) {
+                return entity_ref.iterator().next().getEndNode();
+            }
+            else {
+                Node entity_ref_node = graphDB.createNode();
+                graphDB.getReferenceNode().createRelationshipTo(entity_ref_node, RelTypes.ENTITY_REFERENCE);
+                tx.success();
+                return entity_ref_node;
+            }
+        }
+        finally {
+            tx.finish();
+        }
     }
+
+
 
     public static void createUser(User user) {
         if (user_reference_node != null) {
@@ -76,7 +106,9 @@ public class TokBoxDB {
                 user_node.setProperty("email", user.email);
 
                 user_index.add(user_node, "display_name", user.display_name);
-                getUserRefNode().createRelationshipTo(user_node, RelTypes.USER);
+                
+                user_reference_node.createRelationshipTo(user_node, RelTypes.USER);
+                //user_rel.setProperty("created_at", new Date());
                 tx.success();
             }
             finally {
@@ -112,6 +144,27 @@ public class TokBoxDB {
         }
         finally {
             tx.finish();
+        }
+    }
+    
+    public static void createEntity(Entity entity) {
+        if (user_reference_node != null) {
+            Transaction tx = graphDB.beginTx();
+            try {
+                Node entity_node = graphDB.createNode();
+                entity_node.setProperty("rev",entity.rev);
+                entity_node.setProperty("parent_dir",entity.parent_dir);
+                entity_node.setProperty("name",entity.name);
+
+                entity_index.add(entity_node, "entity_id", entity_node.getId());
+
+                entity_reference_node.createRelationshipTo(entity_node, RelTypes.ENTITY_REFERENCE);
+                //user_rel.setProperty("created_at", new Date());
+                tx.success();
+            }
+            finally {
+                tx.finish();
+            }
         }
     }
 }
