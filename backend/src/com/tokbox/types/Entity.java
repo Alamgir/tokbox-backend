@@ -19,6 +19,7 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 public class Entity {
+    public long id;
     public String size;
     public String rev;
     public String hash;
@@ -34,6 +35,7 @@ public class Entity {
     public String root; 
     public String mime_type;
     public Entity[] contents;
+    public ArrayList<Comment> comments;
 
     public void setModified(String modified_string) {
         DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");

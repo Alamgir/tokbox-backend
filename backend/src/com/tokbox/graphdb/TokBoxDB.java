@@ -1,6 +1,7 @@
 package com.tokbox.graphdb;
 
 
+import com.tokbox.types.Comment;
 import com.tokbox.types.Entity;
 import com.tokbox.types.User;
 import org.neo4j.graphdb.*;
@@ -157,6 +158,9 @@ public class TokBoxDB {
                 entity_node.setProperty("name",entity.name);
 
                 entity_index.add(entity_node, "entity_id", entity_node.getId());
+                entity_index.add(entity_node, "parent_dir", entity.parent_dir);
+                //set the entity id to the node id
+                entity.id = entity_node.getId();
 
                 entity_reference_node.createRelationshipTo(entity_node, RelTypes.ENTITY_REFERENCE);
                 //user_rel.setProperty("created_at", new Date());
@@ -164,6 +168,74 @@ public class TokBoxDB {
             }
             finally {
                 tx.finish();
+            }
+        }
+    }
+    
+    public static boolean updateEntity(Entity entity) {
+        boolean result = false;
+        if (entity_reference_node != null) {
+            Node found_entity = entity_index.get("entity_id", entity.id).getSingle();
+            Transaction tx = graphDB.beginTx();
+            try {
+                found_entity.setProperty("parent_dir", entity.parent_dir);
+                found_entity.setProperty("name", entity.name);
+                if (entity.id == found_entity.getId()) {
+                    tx.success();
+                    result = true;
+                }
+            }
+            finally {
+                tx.finish();
+            }
+        }
+        return result;
+    }
+    
+    public static void createComment(String body, String author_name, long parent_entity_id) {
+        if (entity_reference_node != null && user_reference_node != null) {
+            Node found_user = user_index.get("display_name", author_name).getSingle();
+            Node found_entity = entity_index.get("entity_id", parent_entity_id).getSingle();
+            long current_epoch = System.currentTimeMillis();
+            Transaction tx = graphDB.beginTx();
+            try {
+                //create a new comment node and attach body
+                Node new_comment = graphDB.createNode();
+                new_comment.setProperty("body", body);
+                new_comment.setProperty("author_name", author_name);
+
+                //create relationshipTo the author's user node, set author_date
+                Relationship author_rel = found_user.createRelationshipTo(new_comment, RelTypes.AUTHOR);
+                author_rel.setProperty("created_at", current_epoch);
+
+                //create relationshipTo the parentEntity node, set attribution_date
+                Relationship comment_rel = found_entity.createRelationshipTo(new_comment, RelTypes.COMMENT);
+                comment_rel.setProperty("created_at", current_epoch);
+                
+                tx.success();
+            }
+            finally {
+                tx.finish();
+            }
+        }
+    }
+    
+    public static void getEntityComments(Entity entity) {
+        if (entity_reference_node != null) {
+            Node found_entity = entity_index.get("parent_dir", entity.parent_dir).getSingle();
+            //Get all comment relationships
+            Iterable<Relationship> comments = found_entity.getRelationships(RelTypes.COMMENT, Direction.OUTGOING);
+            while (comments.iterator().hasNext()) {
+                Comment new_comment = new Comment();
+
+                Relationship comment_rel = comments.iterator().next();
+                Node comment_node = comment_rel.getEndNode();
+
+                new_comment.author_name = (String)comment_node.getProperty("author_name");
+                new_comment.body = (String)comment_node.getProperty("body");
+                new_comment.created_at = (Long)comment_rel.getProperty("created_at");
+
+                entity.comments.add(new_comment);
             }
         }
     }

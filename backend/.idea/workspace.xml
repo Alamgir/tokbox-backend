@@ -162,7 +162,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java" line="42" class="com.tokbox.graphdb.TokBoxDB" package="com.tokbox.graphdb">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java" line="43" class="com.tokbox.graphdb.TokBoxDB" package="com.tokbox.graphdb">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -267,13 +267,22 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Entity.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="Entity.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/tokbox/types/Entity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="56" column="40" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.69411767">
+                <state line="22" column="23" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
                   <folding>
-                    <element signature="e#1371#1379#0" expanded="true" />
+                    <element signature="e#1431#1439#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Comment.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/tokbox/types/Comment.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="12" column="27" selection-start="285" selection-end="285" vertical-scroll-proportion="0.27809966">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -357,10 +366,8 @@
           <file leaf-file-name="TokBoxDB.java" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="155" column="72" selection-start="5494" selection-end="5494" vertical-scroll-proportion="0.51724136">
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state line="235" column="85" selection-start="9073" selection-end="9073" vertical-scroll-proportion="0.83908045">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -391,8 +398,9 @@
         <option value="$PROJECT_DIR$/src/com/tokbox/listener/OAuthListener.java" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/com/tokbox/listener/GraphDBListener.java" />
-        <option value="$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java" />
+        <option value="$PROJECT_DIR$/src/com/tokbox/types/Comment.java" />
         <option value="$PROJECT_DIR$/src/com/tokbox/types/Entity.java" />
+        <option value="$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java" />
       </list>
     </option>
   </component>
@@ -440,8 +448,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -731,17 +739,17 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="OverrideImplement.combined" value="true" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RecentsManager">
@@ -939,7 +947,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19871795" sideWeight="0.23678415" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15170941" sideWeight="0.6013216" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15117522" sideWeight="0.6013216" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1005,11 +1013,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/commons/db/user/UserDBSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="37" selection-start="5010" selection-end="5010" vertical-scroll-proportion="0.40983605" />
-      </provider>
-    </entry>
     <entry file="jar://E:/Program Files/JDK/jre/lib/ext/catalina.jar!/org/apache/catalina/core/StandardContext.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="730" column="19" selection-start="33984" selection-end="33984" vertical-scroll-proportion="0.3319672" />
@@ -1047,9 +1050,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tokbox/listener/GraphDBListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="41" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="35" column="41" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cboxgames/idonia/backend/UserHttpServlet.java">
@@ -1077,21 +1078,26 @@
         <state line="11" column="19" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tokbox/types/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="72" selection-start="5494" selection-end="5494" vertical-scroll-proportion="0.51724136">
+        <state line="22" column="23" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1431#1439#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tokbox/types/Entity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tokbox/graphdb/TokBoxDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="40" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.69411767">
-          <folding>
-            <element signature="e#1371#1379#0" expanded="true" />
-          </folding>
+        <state line="235" column="85" selection-start="9073" selection-end="9073" vertical-scroll-proportion="0.83908045">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tokbox/types/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="27" selection-start="285" selection-end="285" vertical-scroll-proportion="0.27809966">
+          <folding />
         </state>
       </provider>
     </entry>
