@@ -34,8 +34,9 @@ public class Entity {
     public String icon;
     public String root; 
     public String mime_type;
-    public Entity[] contents;
+    public ArrayList<Entity> contents;
     public ArrayList<Comment> comments;
+    public boolean orphan;
 
     public void setModified(String modified_string) {
         DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
@@ -44,6 +45,10 @@ public class Entity {
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
+    }
+
+    public void setContents(Entity[] entities) {
+        contents = new ArrayList<Entity>(Arrays.asList(entities));
     }
     
     public void setPath(String path) {
