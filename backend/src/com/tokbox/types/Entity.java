@@ -51,20 +51,24 @@ public class Entity {
         contents = new ArrayList<Entity>(Arrays.asList(entities));
     }
     
-    public void setPath(String path) {
-        ArrayList<String> path_array = new ArrayList<String>(Arrays.asList(path.split("/")));
+    public void setPath(String path_data) {
+        path = path_data;
+        ArrayList<String> path_array = new ArrayList<String>(Arrays.asList(path_data.split("/")));
         //isolate the name
-        name = path_array.get(path_array.size());
-        //remove the name
-        path_array.remove(path_array.get(path_array.size()));
+        if (!path_array.isEmpty()) {
+            name = path_array.get(path_array.size()-1);
+            //remove the name
+            path_array.remove(path_array.get(path_array.size()-1));
 
-        //rebuild the parent path
-        StringBuilder path_builder = new StringBuilder();
-        for (String string : path_array) {
-            path_builder.append(string);
-            path_builder.append("/");
+            //rebuild the parent path
+            StringBuilder path_builder = new StringBuilder();
+            for (String string : path_array) {
+                path_builder.append(string);
+                path_builder.append("/");
+            }
+            parent_dir = path_builder.toString();
         }
-        parent_dir = path_builder.toString();
+
         
     }
     

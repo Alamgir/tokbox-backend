@@ -1,5 +1,6 @@
 package com.tokbox.types;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -16,4 +17,5 @@ public class User {
     public String country;
     public HashMap<String,Long> quota_info;
     public String email;
+    public ArrayList<User> team_members;
 }

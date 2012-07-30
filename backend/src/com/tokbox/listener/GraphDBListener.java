@@ -33,7 +33,7 @@ public class GraphDBListener implements ServletContextListener {
         //TokBoxDB.createUser(user);
         //TokBoxDB.getUser("Alamgir Mand");
         //TokBoxDB.deleteUser("Alamgir Mand");
-        TokBoxDB.getUser("Alamgir Mand");
+        TokBoxDB.getUser(123456789);
 
 
     }

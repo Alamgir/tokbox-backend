@@ -20,7 +20,7 @@ import java.util.HashMap;
  * Time: 4:35 PM
  * To change this template use File | Settings | File Templates.
  */
-public class TokBoxDB {
+public class TokBoxDB extends TokBoxDBKeys {
     public static GraphDatabaseService graphDB;
     public static Index<Node> user_index;
     public static Index<Node> entity_index;
@@ -34,6 +34,7 @@ public class TokBoxDB {
         PARENT_DIR_REFERENCE,
         ENTITY_REFERENCE,
         USER,
+        TEAM_MEMBER,
         ENTITY,
         AUTHOR,
         COMMENT,
@@ -128,14 +129,14 @@ public class TokBoxDB {
             Transaction tx = graphDB.beginTx();
             try {
                 Node user_node = graphDB.createNode();
-                user_node.setProperty("display_name", user.display_name);
-                user_node.setProperty("referral_link", user.referral_link);
-                user_node.setProperty("country", user.country);
+                user_node.setProperty(DISPLAY_NAME_KEY, user.display_name);
+                user_node.setProperty(REFERRAL_LINK_KEY, user.referral_link);
+                user_node.setProperty(COUNTRY_KEY, user.country);
                 //user_node.setProperty("quota_info", user.quota_info);
-                user_node.setProperty("email", user.email);
-                user_node.setProperty("uid", user.uid);
+                user_node.setProperty(EMAIL_KEY, user.email);
+                user_node.setProperty(UID_KEY, user.uid);
 
-                user_index.add(user_node, "uid", user.uid);
+                user_index.add(user_node, UID_KEY, user.uid);
                 
                 user_reference_node.createRelationshipTo(user_node, RelTypes.USER);
                 //user_rel.setProperty("created_at", new Date());
@@ -149,21 +150,22 @@ public class TokBoxDB {
     
     public static User getUser(long uid) {
         User user = new User();
-        Node found_user = user_index.get("uid", uid).getSingle();
+        Node found_user = user_index.get(UID_KEY, uid).getSingle();
 
         if (found_user != null) {
-            user.display_name = (String) found_user.getProperty("display_name");
-            user.country = (String) found_user.getProperty("country");
-            user.email = (String) found_user.getProperty("email");
+            user.display_name = (String) found_user.getProperty(DISPLAY_NAME_KEY);
+            user.country = (String) found_user.getProperty(COUNTRY_KEY);
+            user.email = (String) found_user.getProperty(EMAIL_KEY);
             //user.quota_info = (HashMap<String,Long>) found_user.getProperty("quota_info");
-            user.referral_link = (String) found_user.getProperty("referral_link");
+            user.referral_link = (String) found_user.getProperty(REFERRAL_LINK_KEY);
+            user.uid = (Long) found_user.getProperty(UID_KEY);
         }
 
         return user;
     }
     
     public static void deleteUser(long uid) {
-        Node found_user = user_index.get("uid", uid).getSingle();
+        Node found_user = user_index.get(UID_KEY, uid).getSingle();
         Transaction tx = graphDB.beginTx();
         try {
             while (found_user.getRelationships().iterator().hasNext()) {
@@ -176,31 +178,38 @@ public class TokBoxDB {
             tx.finish();
         }
     }
+
+    public static void addTeamMember(User team_member) {
+
+    }
     
     public static Node createEntity(Entity entity) {
         Node entity_node = graphDB.createNode();
-        Node parent_dir_node = graphDB.createNode();
+        //get parent_dir node if exists
+        Node parent_dir_node = parent_dir_index.get(PATH_KEY, entity.parent_dir).getSingle();
+        //Create the parent_dir node if null
+        if (parent_dir_node == null) {
+            parent_dir_node = graphDB.createNode();
+            parent_dir_node.setProperty(PATH_KEY, entity.parent_dir);
+            //add parent_dir to index and reference node
+            parent_dir_index.add(parent_dir_node, PATH_KEY, entity.parent_dir);
+            parent_dir_reference_node.createRelationshipTo(parent_dir_node, RelTypes.PARENT_DIR);
+        }
         if (user_reference_node != null) {
             Transaction tx = graphDB.beginTx();
             try {
                 //Create the entity node
-                entity_node.setProperty("rev",entity.rev);
-                entity_node.setProperty("name",entity.name);
-                entity_node.setProperty("orphan", entity.orphan);
-                entity_index.add(entity_node, "entity_id", entity_node.getId());
-                entity_index.add(entity_node, "parent_dir", entity.parent_dir);
+                entity_node.setProperty(NAME_KEY,entity.name);
+                entity_node.setProperty(ORPHAN_KEY, entity.orphan);
+                entity_index.add(entity_node, ENTITY_ID_KEY, entity_node.getId());
+                entity_index.add(entity_node, PARENT_DIR_KEY, entity.parent_dir);
                 //set the entity id to the node id
                 entity.id = entity_node.getId();
                 //add entity to index
                 entity_reference_node.createRelationshipTo(entity_node, RelTypes.ENTITY_REFERENCE);
                 //user_rel.setProperty("created_at", new Date());
 
-                //Create the parent_dir node
-                parent_dir_node.setProperty("path", entity.parent_dir);
-                //add parent_dir to index
-                parent_dir_index.add(parent_dir_node, "path", entity.parent_dir);
                 //connect parent_dir node to entity node
-                parent_dir_reference_node.createRelationshipTo(parent_dir_node, RelTypes.PARENT_DIR);
                 parent_dir_node.createRelationshipTo(entity_node, RelTypes.PARENT);
 
 
