@@ -20,6 +20,7 @@ import java.util.Date;
  */
 public class Entity {
     public long id;
+    public long parent_id;
     public String size;
     public String rev;
     public String hash;
@@ -29,6 +30,7 @@ public class Entity {
     public String client_mtime;
     public String path;
     public String name;
+    public String parent_name;
     public String parent_dir;
     public boolean is_dir;
     public String icon;
@@ -54,10 +56,17 @@ public class Entity {
     public void setPath(String path_data) {
         path = path_data;
         ArrayList<String> path_array = new ArrayList<String>(Arrays.asList(path_data.split("/")));
-        //isolate the name
+        //isolate the names
         if (!path_array.isEmpty()) {
             name = path_array.get(path_array.size()-1);
-            //remove the name
+
+            //set the parent name
+            parent_name = path_array.get(path_array.size()-2);
+            if (parent_name.equals("/"))
+                //set the parent_name to the root when parent_dir is "/"
+                parent_name = root;
+
+            //remove the entity name
             path_array.remove(path_array.get(path_array.size()-1));
 
             //rebuild the parent path
