@@ -5,12 +5,14 @@ import com.cboxgames.idonia.backend.commons.ResponseTools;
 import com.cboxgames.idonia.backend.commons.UriToArgv;
 import com.cboxgames.idonia.backend.commons.authentication.AuthenticateUser;
 import com.cboxgames.utils.json.JsonConverter;
+import com.tokbox.graphdb.TokBoxDB;
 import com.tokbox.service.TokBoxOAuth;
 import com.tokbox.types.Entity;
 import com.tokbox.types.User;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.neo4j.helpers.UTF8;
 import org.scribe.builder.api.DropBoxApi;
 import org.scribe.exceptions.OAuthException;
 import org.scribe.model.*;
@@ -23,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -138,6 +141,9 @@ public class UserHttpServlet extends HttpServlet {
 //                        String path_string = (String)data.get("path");
                         
                         String path_string = request.getParameter("path");
+                        if (path_string.contains("%"))
+                            path_string = URLEncoder.encode(path_string, "UTF-8");
+                        //String path_string = raw_path.replace(" ", "%20");
 
                         StringBuilder path_builder = new StringBuilder("https://api.dropbox.com/1/metadata/");
                         path_builder.append(path_string);
@@ -145,9 +151,9 @@ public class UserHttpServlet extends HttpServlet {
                         OAuthRequest path_request = new OAuthRequest(Verb.GET, path_builder.toString());
                         TokBoxOAuth.service.signRequest(access_token, path_request);
                         Response path_response = path_request.send();
-                        Entity path_data = new Entity();
+                        System.out.println(path_response.getBody());
                         if (path_response.isSuccessful()) {
-                            path_data = _mapper.readValue(path_response.getBody(), Entity.class);
+                            Entity path_data = _mapper.readValue(path_response.getBody(), Entity.class);
                             ResponseTools.prepareResponseJson(response, _mapper, path_data, Constants.SC_OK);
                         }
                         else {
@@ -222,6 +228,7 @@ public class UserHttpServlet extends HttpServlet {
                         Response user_data_response = user_data_request.send();
                         if (user_data_response.isSuccessful()) {
                             User user_data = _mapper.readValue(user_data_response.getBody(), User.class);
+                            TokBoxDB.createUser(user_data);
                             dp_data_map.put("user_data", user_data);
                         }
 
@@ -230,6 +237,7 @@ public class UserHttpServlet extends HttpServlet {
                         Response data_response = data_request.send();
                         if (data_response.isSuccessful()) {
                             Entity root_data = _mapper.readValue(data_response.getBody(), Entity.class);
+                            TokBoxDB.getEntityComments(root_data);
                             dp_data_map.put("root_data", root_data);
                         }
 
@@ -255,6 +263,7 @@ public class UserHttpServlet extends HttpServlet {
                 InputStream stream = request.getInputStream();
                 String access_token = "";
                 String access_secret = "";
+                String access_rawResponse = "";
                 @SuppressWarnings("unchecked")
                 Map<String, Object> auth_data = _mapper.readValue(stream, Map.class);
 
@@ -265,7 +274,11 @@ public class UserHttpServlet extends HttpServlet {
                 if (auth_data.containsKey("access_secret")) {
                     access_secret = (String)auth_data.get("access_secret");
                 }
-                Token token = new Token(access_token, access_secret);
+                
+                if (auth_data.containsKey("access_rawResponse")) {
+                    access_rawResponse = (String)auth_data.get("access_rawResponse");
+                }
+                Token token = new Token(access_token, access_secret, access_rawResponse);
 
                 try {
                     if (token != null) {
@@ -278,6 +291,7 @@ public class UserHttpServlet extends HttpServlet {
                         Response user_data_response = user_data_request.send();
                         if (user_data_response.isSuccessful()) {
                             User user_data = _mapper.readValue(user_data_response.getBody(), User.class);
+                            user_data.gravatar_url = TokBoxDB.getUserGravatar(user_data.uid);
                             dp_data_map.put("user_data", user_data);
                         }
                         else {
@@ -295,6 +309,7 @@ public class UserHttpServlet extends HttpServlet {
                         Response data_response = data_request.send();
                         if (data_response.isSuccessful()) {
                             Entity root_data = _mapper.readValue(data_response.getBody(), Entity.class);
+                            TokBoxDB.getEntityComments(root_data);
                             dp_data_map.put("root_data", root_data);
                         }
 

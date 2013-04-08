@@ -4,6 +4,9 @@ package com.tokbox.graphdb;
 import com.tokbox.types.Comment;
 import com.tokbox.types.Entity;
 import com.tokbox.types.User;
+import jgravatar.Gravatar;
+import jgravatar.GravatarDefaultImage;
+import jgravatar.GravatarRating;
 import org.neo4j.graphdb.*;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.graphdb.index.Index;
@@ -135,6 +138,9 @@ public class TokBoxDB extends TokBoxDBKeys {
                 //user_node.setProperty("quota_info", user.quota_info);
                 user_node.setProperty(EMAIL_KEY, user.email);
                 user_node.setProperty(UID_KEY, user.uid);
+                
+                user.gravatar_url = getUserGravatar(user.email);
+                user_node.setProperty(GRAVATAR_KEY, user.gravatar_url);
 
                 user_index.add(user_node, UID_KEY, user.uid);
                 
@@ -149,18 +155,30 @@ public class TokBoxDB extends TokBoxDBKeys {
     }
     
     public static User getUser(long uid) {
-        User user = new User();
+        //User user = new User();
         Node found_user = user_index.get(UID_KEY, uid).getSingle();
 
-        if (found_user != null) {
-            user.display_name = (String) found_user.getProperty(DISPLAY_NAME_KEY);
-            user.country = (String) found_user.getProperty(COUNTRY_KEY);
-            user.email = (String) found_user.getProperty(EMAIL_KEY);
-            //user.quota_info = (HashMap<String,Long>) found_user.getProperty("quota_info");
-            user.referral_link = (String) found_user.getProperty(REFERRAL_LINK_KEY);
-            user.uid = (Long) found_user.getProperty(UID_KEY);
-        }
-
+        if (found_user != null)
+            return getUserFromNode(found_user);
+        else
+            return null;
+    }
+    
+    public static String getUserGravatar(long uid) {
+        Node found_user = user_index.get(UID_KEY, uid).getSingle();
+        if (found_user != null)
+            return (String) found_user.getProperty(GRAVATAR_KEY);
+        else
+            return null;
+    }
+    
+    public static User getUserFromNode(Node found_user) {
+        User user = new User();
+        user.display_name = (String) found_user.getProperty(DISPLAY_NAME_KEY);
+        user.country = (String) found_user.getProperty(COUNTRY_KEY);
+        user.email = (String) found_user.getProperty(EMAIL_KEY);
+        user.referral_link = (String) found_user.getProperty(REFERRAL_LINK_KEY);
+        user.uid = (Long) found_user.getProperty(UID_KEY);
         return user;
     }
     
@@ -184,6 +202,8 @@ public class TokBoxDB extends TokBoxDBKeys {
     }
     
     public static Node createEntity(Entity entity) {
+        Transaction tx = graphDB.beginTx();
+
         Node entity_node = graphDB.createNode();
         //get parent_dir node if exists
         Node parent_dir_node = entity_index.get(PATH_KEY, entity.parent_dir).getSingle();
@@ -199,8 +219,7 @@ public class TokBoxDB extends TokBoxDBKeys {
             entity_index.add(parent_dir_node, PATH_KEY, entity.parent_dir);
             entity_reference_node.createRelationshipTo(parent_dir_node, RelTypes.ENTITY);
         }
-        if (user_reference_node != null) {
-            Transaction tx = graphDB.beginTx();
+        if (entity_reference_node != null) {
             try {
                 //Create the entity node
                 entity_node.setProperty(PATH_KEY, entity.path);
@@ -247,9 +266,10 @@ public class TokBoxDB extends TokBoxDBKeys {
         return result;
     }
     
-    public static void createComment(String body, User user, Entity parent_entity) {
+    public static void createComment(String body, long uid, Entity parent_entity) {
         if (entity_reference_node != null && user_reference_node != null) {
-            Node found_user = user_index.get(UID_KEY, user.uid).getSingle();
+            Node found_user = user_index.get(UID_KEY, uid).getSingle();
+            User user = getUserFromNode(found_user);
             Node found_entity = entity_index.get(ENTITY_ID_KEY, parent_entity.id).getSingle();
             long current_epoch = System.currentTimeMillis();
             Transaction tx = graphDB.beginTx();
@@ -272,9 +292,9 @@ public class TokBoxDB extends TokBoxDBKeys {
                 Relationship comment_rel = found_entity.createRelationshipTo(new_comment, RelTypes.COMMENT);
                 comment_rel.setProperty(CREATED_AT_KEY, current_epoch);
 
-                tx.success();
             }
             finally {
+                tx.success();
                 tx.finish();
             }
         }
@@ -291,23 +311,24 @@ public class TokBoxDB extends TokBoxDBKeys {
             if (entity_reference_node != null) {
                 //find the parent_dir node for the child entities
                 Node parent_dir_node = entity_index.get(PATH_KEY, entity.path).getSingle();
-                Iterable<Relationship> parent_dir_rel = parent_dir_node.getRelationships(RelTypes.PARENT, Direction.OUTGOING);
-                //iterate through the child entities of the parent_dir_node and get their comments
-                while (parent_dir_rel.iterator().hasNext()) {
-                    //Deal with each entity_node in the parent_dir
-                    Node entity_node = parent_dir_rel.iterator().next().getEndNode();
-                    //String entity_node_rev = (String)entity_node.getProperty("rev");
-                    String entity_node_name = (String)entity_node.getProperty(NAME_KEY);
-                    String entity_node_path = (String)entity_node.getProperty(PATH_KEY);
-                    //check if the entity node even exists in the entity given by dropbox
-                    ArrayList<Comment> comments = getEntityNodeComments(entity_node);
-                    boolean name_match = false;
-                    for (Entity child_entity : entity.contents) {
-                        if (entity_node_name.equals(child_entity.name)) {
-                            //success, name match: go ahead as usual
-                            name_match = true;
-                            child_entity.comments = comments;
-                        }
+                if (parent_dir_node != null) {
+                    Iterable<Relationship> parent_dir_rel = parent_dir_node.getRelationships(RelTypes.PARENT, Direction.OUTGOING);
+                    //iterate through the child entities of the parent_dir_node and get their comments
+                    while (parent_dir_rel.iterator().hasNext()) {
+                        //Deal with each entity_node in the parent_dir
+                        Node entity_node = parent_dir_rel.iterator().next().getEndNode();
+                        //String entity_node_rev = (String)entity_node.getProperty("rev");
+                        String entity_node_name = (String)entity_node.getProperty(NAME_KEY);
+                        String entity_node_path = (String)entity_node.getProperty(PATH_KEY);
+                        //check if the entity node even exists in the entity given by dropbox
+                        ArrayList<Comment> comments = getEntityNodeComments(entity_node);
+                        boolean name_match = false;
+                        for (Entity child_entity : entity.contents) {
+                            if (entity_node_name.equals(child_entity.name)) {
+                                //success, name match: go ahead as usual
+                                name_match = true;
+                                child_entity.comments = comments;
+                            }
 //                        if (!child_entity.name.equals(entity_node_name)) {
 //                            //name doesn't match, so rev doesn't either: match the rev and attribute comments
 //                            //entity_node.setProperty("rev", child_entity.rev);
@@ -328,23 +349,24 @@ public class TokBoxDB extends TokBoxDBKeys {
 //
 //                            entity.contents.add(orphaned_entity);
 //                        }
+                        }
+
+                        if (!name_match) {
+                            Entity orphaned_entity = new Entity();
+                            orphaned_entity.orphan = true;
+                            //nothing matches, the node is an orphaned entity:
+                            entity_node.setProperty("orphan", orphaned_entity.orphan);
+                            //attribute comments to a new entity and add it to entity.contents
+                            orphaned_entity.rev = (String)entity_node.getProperty("rev");
+                            orphaned_entity.name = (String)entity_node.getProperty("name");
+                            orphaned_entity.parent_dir = entity.path;
+                            orphaned_entity.icon = "orphan";
+                            orphaned_entity.comments = comments;
+
+                            entity.contents.add(orphaned_entity);
+                        }
+
                     }
-
-                    if (!name_match) {
-                        Entity orphaned_entity = new Entity();
-                        orphaned_entity.orphan = true;
-                        //nothing matches, the node is an orphaned entity:
-                        entity_node.setProperty("orphan", orphaned_entity.orphan);
-                        //attribute comments to a new entity and add it to entity.contents
-                        orphaned_entity.rev = (String)entity_node.getProperty("rev");
-                        orphaned_entity.name = (String)entity_node.getProperty("name");
-                        orphaned_entity.parent_dir = entity.path;
-                        orphaned_entity.icon = "orphan";
-                        orphaned_entity.comments = comments;
-
-                        entity.contents.add(orphaned_entity);
-                    }
-
                 }
                 tx.success();
             }
@@ -369,6 +391,13 @@ public class TokBoxDB extends TokBoxDBKeys {
             comments.add(comment);
         }
         return comments;
+    }
+    
+    private static String getUserGravatar(String email) {
+        Gravatar gravatar = new Gravatar();
+        gravatar.setSize(50);
+        gravatar.setRating(GravatarRating.XPLICIT);
+        return  gravatar.getUrl(email);
     }
 
 }

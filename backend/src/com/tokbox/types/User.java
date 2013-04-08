@@ -17,5 +17,6 @@ public class User {
     public String country;
     public HashMap<String,Long> quota_info;
     public String email;
+    public String gravatar_url;
     public ArrayList<User> team_members;
 }

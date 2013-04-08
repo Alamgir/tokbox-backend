@@ -36,6 +36,8 @@
           <element id="file-copy" path="$PROJECT_DIR$/../../neo4j-community-1.8.M05/lib/org.apache.servicemix.bundles.jline-0.9.94_1.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/../../neo4j-community-1.8.M05/lib/scala-library-2.9.1-1.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/../../neo4j-community-1.8.M05/lib/server-api-1.8.M05.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../Downloads/ralfebert-jgravatar-1.0.0-2-ga5d3f30/ralfebert-jgravatar-a5d3f30/jgravatar/out/production/Jgravatar.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../Downloads/ralfebert-jgravatar-1.0.0-2-ga5d3f30/ralfebert-jgravatar-a5d3f30/jgravatar/out/artifacts/Jgravatar_jar/Jgravatar.jar" />
         </element>
       </element>
     </root>
