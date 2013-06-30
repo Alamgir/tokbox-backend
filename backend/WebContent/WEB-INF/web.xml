@@ -51,17 +51,17 @@
       <!--<listener-class>com.cboxgames.idonia.backend.listener.APNS.APNSListenerConfig</listener-class>-->
   <!--</listener>-->
   
-  <listener>
-    <listener-class>
-  	  com.cboxgames.idonia.backend.listener.LoggerInit
-    </listener-class>
-  </listener>
+  <!--<listener>-->
+    <!--<listener-class>-->
+  	  <!--com.cboxgames.idonia.backend.listener.LoggerInit-->
+    <!--</listener-class>-->
+  <!--</listener>-->
 
-    <listener>
-        <listener-class>
-            com.tokbox.listener.OAuthListener
-        </listener-class>
-    </listener>
+    <!--<listener>-->
+        <!--<listener-class>-->
+            <!--com.tokbox.listener.OAuthListener-->
+        <!--</listener-class>-->
+    <!--</listener>-->
 
     <!--<listener>-->
         <!--<listener-class>-->
@@ -73,7 +73,7 @@
 
   <servlet>
       <servlet-name>UserHttpServlet</servlet-name>
-      <servlet-class>com.tokbox.UserHttpServlet</servlet-class>
+      <servlet-class>com.huemate.UserHttpServlet</servlet-class>
   </servlet>
   <servlet-mapping>
       <servlet-name>UserHttpServlet</servlet-name>

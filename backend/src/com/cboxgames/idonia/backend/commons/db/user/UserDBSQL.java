@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 
 import com.cboxgames.idonia.backend.commons.Utility;
 import com.cboxgames.idonia.backend.commons.db.achievement.UserAchievementDBSQL;
+import com.cboxgames.idonia.backend.commons.db.userlight.UserLightDBSQL;
 import com.cboxgames.idonia.backend.commons.db.userpotion.UserPotionDBSQL;
 import com.cboxgames.idonia.backend.commons.db.usersoul.UserSoulDBSQL;
 import com.cboxgames.stack.system.services.logging.CBoxLoggerSyslog;
@@ -23,12 +24,76 @@ import com.cboxgames.idonia.backend.commons.db.usercharacter.UserCharacterDBSQL;
 import com.cboxgames.idonia.backend.commons.db.playlist.UserPlaylistDBSQL;
 import com.cboxgames.idonia.backend.commons.db.usercharacteraccessory.UserCharacterAccessoryDBSQL;
 import com.cboxgames.idonia.backend.commons.authentication.BCrypt;
+import com.cboxgames.utils.idonia.types.proto.UserLightArrayProto;
+import com.cboxgames.utils.idonia.types.proto.UserLightProto;
+import com.cboxgames.utils.idonia.types.proto.UserNodeArrayProto;
+import com.cboxgames.utils.idonia.types.proto.UserNodeProto;
+import com.dyuproject.protostuff.LinkedBuffer;
+import com.dyuproject.protostuff.ProtostuffIOUtil;
+import com.huemate.HueGroup;
+import com.huemate.HueLight;
+import com.huemate.HueUser;
 
 public class UserDBSQL extends DBSQL implements IUserDB {
 	
 	public UserDBSQL(DataSource data_source, ServletContext servlet_context) throws SQLException {
 		super(data_source, servlet_context);
 	}
+
+    public HueUser createHueUser(String username, String password) {
+        Connection conn = null;
+        ResultSet gen_keys = null;
+        HueUser user = new HueUser();
+        String pw_hash = BCrypt.hashpw(password, BCrypt.gensalt(4));
+
+        try {
+            conn = getConnection();
+            conn.setAutoCommit(false);
+            PreparedStatement query = conn.prepareStatement("INSERT INTO users(light_ids, admin, approved) "
+                                                                    + "VALUES (?, ?, ?) ",
+                                                            Statement.RETURN_GENERATED_KEYS);
+            user.admin = false;
+            user.approved = false;
+
+            List<UserLightProto> ulp_list = new ArrayList<UserLightProto>();
+            UserLightArrayProto light_array = new UserLightArrayProto();
+            light_array.setUserLightsList(ulp_list);
+            byte[] empty_light_data = ProtostuffIOUtil.toByteArray(light_array, UserLightArrayProto.getSchema(),
+                                                                   LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
+
+            query.setBytes(1, empty_light_data);
+            query.setBoolean(2, user.admin);
+            query.setBoolean(3, user.approved);
+            query.executeUpdate();
+
+            gen_keys = query.getGeneratedKeys();
+            if (gen_keys.next()) {
+                user.id = gen_keys.getInt(1);
+            }
+
+            user.username = username;
+
+
+
+            PreparedStatement query_two = conn.prepareStatement("INSERT INTO user_id_name_map(user_id, username, hashed_password)"
+                                                                        + "VALUES (?, ?, ?)");
+            query_two.setInt(1, user.id);
+            query_two.setString(2, user.username);
+            query_two.setString(3, pw_hash);
+            query_two.executeUpdate();
+
+            conn.commit();
+
+        } catch (SQLException e) {
+            rollbackConnection(conn);
+            e.printStackTrace();
+            user = null;
+        }
+        finally {
+            closeConnection(conn);
+        }
+        return user;
+    }
 
     public User createUser(String username, String password, String device_token, String udid, String mac_address) {
     	
@@ -205,6 +270,160 @@ public class UserDBSQL extends DBSQL implements IUserDB {
         }
         
         return user;
+    }
+
+    public HueUser getHueUserByID(int user_id) {
+        Connection conn = null;
+        HueUser user = null;
+        try {
+            conn = getConnection();
+
+            PreparedStatement query = conn.prepareStatement("SELECT users.id as user_id," +
+                                                                    "user_id_name_map.username as username," +
+                                                                    "user_id_name_map.hashed_password as hashed_pw," +
+                                                                    "users.light_ids as light_ids," +
+                                                                    "users.admin as admin," +
+                                                                    "users.approved as approved," +
+                                                                    "users.group_id as group_id" +
+                                                                    " FROM users, user_id_name_map" +
+                                                                    " WHERE user_id_name_map.user_id = users.id" +
+                                                                    " AND users.id = ? ");
+            query.setInt(1, user_id);
+            ResultSet results = query.executeQuery();
+            if ((results != null) && results.next()) {
+                user = new HueUser();
+                getHueUserFromResult(user, results, conn);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection(conn);
+        }
+
+        return user;
+    }
+
+    public HueUser getHueUserByUsername(String username) {
+        Connection conn = null;
+        HueUser user = null;
+        try {
+            conn = getConnection();
+
+            PreparedStatement query = conn.prepareStatement("SELECT users.id as user_id," +
+                                                                    "user_id_name_map.username as username," +
+                                                                    "user_id_name_map.hashed_password as hashed_pw," +
+                                                                    "users.light_ids as light_ids," +
+                                                                    "users.admin as admin," +
+                                                                    "users.approved as approved," +
+                                                                    "users.group_id as group_id" +
+                                                                    " FROM users, user_id_name_map" +
+                                                                    " WHERE user_id_name_map.user_id = users.id" +
+                                                                    " AND user_id_name_map.username = ? ");
+            query.setString(1, username);
+            ResultSet results = query.executeQuery();
+            if ((results != null) && results.next()) {
+                user = new HueUser();
+                getHueUserFromResult(user, results, conn);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection(conn);
+        }
+
+        return user;
+    }
+
+    public boolean saveHueUser(HueUser user) {
+        Connection conn = null;
+        boolean saved = false;
+        try {
+            conn = getConnection();
+
+
+
+            PreparedStatement query = conn.prepareStatement("UPDATE users SET light_ids = ?, admin = ?, approved = ? "
+                                                                    + "WHERE id = ? ");
+            query.setBytes(1, getHueLightsProtoArray(user.lights));
+            query.setBoolean(2, user.admin);
+            query.setBoolean(3, user.approved);
+            query.setInt(4, user.id);
+            query.executeUpdate();
+            saved = true;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection(conn);
+        }
+
+        return saved;
+    }
+
+    public HueGroup getGroup() {
+        Connection conn = null;
+        HueGroup group = new HueGroup();
+        try {
+            conn = getConnection();
+
+            PreparedStatement query = conn.prepareStatement("SELECT id, bridge_ip, username " +
+                                                            "FROM groups " +
+                                                            "WHERE id = 1");
+            ResultSet results = query.executeQuery();
+            if (results != null && results.next()) {
+                group.bridge_ip = results.getString("bridge_ip");
+                group.username = results.getString("username");
+                group.id = results.getInt("id");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection(conn);
+        }
+        return group;
+    }
+
+    public ArrayList<HueUser> getAdminDatabyAdmin(HueUser admin) {
+        Connection conn = null;
+        ArrayList<HueUser> user_list = new ArrayList<HueUser>();
+
+        try {
+            conn = getConnection();
+
+            PreparedStatement get_users = conn.prepareStatement("SELECT users.id as user_id," +
+                                                                        "user_id_name_map.username as username," +
+                                                                        "user_id_name_map.hashed_password as hashed_pw," +
+                                                                        "users.light_ids as light_ids," +
+                                                                        "users.admin as admin," +
+                                                                        "users.approved as approved," +
+                                                                        "users.group_id as group_id" +
+                                                                        " FROM users, user_id_name_map" +
+                                                                        " WHERE user_id_name_map.user_id = users.id" +
+                                                                        " AND users.group_id = ? AND users.id != ? ");
+
+            get_users.setInt(1, admin.group_id);
+            get_users.setInt(2, admin.id);
+            ResultSet users = get_users.executeQuery();
+            if (users != null) {
+                while (users.next()) {
+                    HueUser user = new HueUser();
+                    getHueUserFromResult(user, users, conn);
+                    //explicitly set the hashed pw to null
+                    user.hashed_pw = null;
+                    user_list.add(user);
+                }
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            closeConnection(conn);
+        }
+        return user_list;
     }
 
     public User getUserByUsername(String username) {
@@ -940,6 +1159,47 @@ public class UserDBSQL extends DBSQL implements IUserDB {
         
         getUserFromResult(user, results, conn);
         return true;
+    }
+
+    private static void getHueUserFromResult(HueUser user, ResultSet results, Connection conn) throws SQLException {
+        user.id = results.getInt("user_id");
+        user.username = results.getString("username");
+        user.hashed_pw = results.getString("hashed_pw");
+        user.admin = results.getBoolean("admin");
+        user.approved = results.getBoolean("approved");
+        user.group_id = results.getInt("group_id");
+        user.lights = getHueLightsFromProto(results.getBytes("light_ids"));
+
+
+    }
+
+    private static ArrayList<HueLight> getHueLightsFromProto(byte[] light_proto_data) {
+        ArrayList<HueLight> lights_list = new ArrayList<HueLight>();
+        UserLightArrayProto light_array = new UserLightArrayProto();
+        ProtostuffIOUtil.mergeFrom(light_proto_data, light_array, UserLightArrayProto.getSchema());
+        List<UserLightProto> ulp_list = light_array.getUserLightsList();
+        if (ulp_list != null) {
+            for (UserLightProto ulp : ulp_list) {
+                HueLight hl = new HueLight();
+                hl.id = ulp.getId();
+                hl.user_approved = ulp.getUserApproved();
+                lights_list.add(hl);
+            }
+        }
+        return lights_list;
+    }
+
+    private static byte[] getHueLightsProtoArray(ArrayList<HueLight> lights_list) {
+        UserLightArrayProto ulp_proto_array = new UserLightArrayProto();
+        ArrayList<UserLightProto> ulp_list = new ArrayList<UserLightProto>();
+        for (HueLight light : lights_list) {
+            UserLightProto ulp = new UserLightProto();
+            ulp.setId(light.id);
+            ulp.setUserApproved(light.user_approved);
+            ulp_list.add(ulp);
+        }
+        ulp_proto_array.setUserLightsList(ulp_list);
+        return ProtostuffIOUtil.toByteArray(ulp_proto_array, UserLightArrayProto.getSchema(), LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
     }
     
     private static void getUserFromResult(User user, ResultSet results, Connection conn) throws SQLException {

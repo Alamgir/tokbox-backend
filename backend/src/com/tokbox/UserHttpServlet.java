@@ -2,8 +2,10 @@ package com.tokbox;
 
 import com.cboxgames.idonia.backend.commons.Constants;
 import com.cboxgames.idonia.backend.commons.ResponseTools;
+import com.cboxgames.idonia.backend.commons.SqlDataSource;
 import com.cboxgames.idonia.backend.commons.UriToArgv;
 import com.cboxgames.idonia.backend.commons.authentication.AuthenticateUser;
+import com.cboxgames.idonia.backend.commons.db.user.UserDBSQL;
 import com.cboxgames.utils.json.JsonConverter;
 import com.tokbox.graphdb.TokBoxDB;
 import com.tokbox.service.TokBoxOAuth;
@@ -274,7 +276,7 @@ public class UserHttpServlet extends HttpServlet {
                 if (auth_data.containsKey("access_secret")) {
                     access_secret = (String)auth_data.get("access_secret");
                 }
-                
+
                 if (auth_data.containsKey("access_rawResponse")) {
                     access_rawResponse = (String)auth_data.get("access_rawResponse");
                 }
@@ -299,7 +301,7 @@ public class UserHttpServlet extends HttpServlet {
                             ResponseTools.prepareResponseJson(response, _mapper, null, Constants.SC_BAD_REQUEST);
                             return;
                         }
-                        
+
                         //Dropbox is still responding to the access token
                         //Reauthenticate the user
                         authenticateUser(request, response, token);

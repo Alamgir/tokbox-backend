@@ -3,10 +3,10 @@ package com.tokbox.listener;
 import com.tokbox.service.TokBoxOAuth;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.RelationshipType;
-import org.neo4j.rest.graphdb.ExecutingRestAPI;
-import org.neo4j.rest.graphdb.GraphDatabaseFactory;
-import org.neo4j.rest.graphdb.RestAPI;
-import org.neo4j.rest.graphdb.RestAPIFacade;
+//import org.neo4j.rest.graphdb.ExecutingRestAPI;
+//import org.neo4j.rest.graphdb.GraphDatabaseFactory;
+//import org.neo4j.rest.graphdb.RestAPI;
+//import org.neo4j.rest.graphdb.RestAPIFacade;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

@@ -49,4 +49,6 @@ public class ResponseMessages {
 	public static final String PLAYLIST_WITH_ID_NOT_FOUND = "Bad playlist id = %d";
 	public static final String UNKNOWN_PVE_TYPE = "Unknown PVE type = %s";
 	public static final String BAD_USER_CHAR_ID = "Bad user character id = %d";
+    public static final String LINK_BUTTON_NOT_PRESSED = "You need to press the Link Button";
+    public static final String USERNAME_TOO_SHORT = "Please choose a username that is 10 characters or larger.";
 }

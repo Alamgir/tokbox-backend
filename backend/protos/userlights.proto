@@ -1,0 +1,13 @@
+package com.cboxgames.utils.idonia.types.proto;
+
+option java_package = "com.cboxgames.utils.idonia.types.proto";
+option java_outer_classname = "UserLightProto";
+
+message UserLightProto {
+	optional int32 id = 1;
+	optional bool user_approved = 2;
+}
+
+message UserLightArrayProto {
+	repeated UserLightProto userLights = 1;
+}
