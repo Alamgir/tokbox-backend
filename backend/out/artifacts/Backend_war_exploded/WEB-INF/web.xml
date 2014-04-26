@@ -69,7 +69,14 @@
         <!--</listener-class>-->
     <!--</listener>-->
 
-
+    <servlet>
+        <servlet-name>wsChat</servlet-name>
+        <servlet-class>com.chat.ChatTest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>wsChat</servlet-name>
+        <url-pattern>/chat</url-pattern>
+    </servlet-mapping>
 
   <servlet>
       <servlet-name>UserHttpServlet</servlet-name>

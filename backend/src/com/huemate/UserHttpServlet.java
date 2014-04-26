@@ -101,7 +101,37 @@ public class UserHttpServlet extends HttpServlet {
                 }
                 break;
             }
+            case URT_UID_DETAILS: {
+                try {
+                    HueLogin.HueResponse hue_response_data = new HueLogin.HueResponse();
+
+                    HttpSession session = request.getSession();
+                    String bridge_url = (String) session.getAttribute("bridge_url");
+
+                    getHueData(bridge_url, hue_response_data);
+
+                    hue_response_data.user_data = _user_db_sql.getHueUserByID(user_id);
+
+                    //Set the admin status
+                    if (hue_response_data.user_data.admin) {
+                        session.setAttribute(AuthenticateUser.USER_ADMIN_KEY, true);
+                        session.setMaxInactiveInterval(-1);
+
+                        //pull the admin_data
+                        hue_response_data.user_data.admin_data = _user_db_sql.getAdminDatabyAdmin(hue_response_data.user_data);
+                    }
+
+                    //Write new_user to JSON
+                    _mapper.configure(SerializationConfig.Feature.AUTO_DETECT_GETTERS, false);
+                    ResponseTools.prepareResponseJson(response, _mapper, hue_response_data, Constants.SC_OK);
+                }
+                catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                    response.setStatus(Constants.SC_INTERNAL_SERVER_ERROR);
+                }
+            }
         }
+
 
     }
 
@@ -413,6 +443,7 @@ public class UserHttpServlet extends HttpServlet {
                     rt.setRequestType(URT_UID_DETAILS);
                     return rt; // GET 1 user
                 }
+
 
                 // Ignore extra strings in argv[indx + 1], argv[indx + 2] if any.
             } catch (NumberFormatException e) {
